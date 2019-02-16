@@ -9,6 +9,7 @@ loke terminal no ketik etapa sira tuir mai nee:
 - kria folder ho naran pykafe
 - cd ba folder pykafe
 - pyenv local pykafe
+
 No tuir mai
 1. git clone git@github.com:pykafe/pykafe.git
 2. pip install -r requirements.txt
