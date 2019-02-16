@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url(../fonts/Montserrat-Regular.woff2);
+}
+
+
 body {
   background-color: #FDFCF8;
   font-family: 'Montserrat';
