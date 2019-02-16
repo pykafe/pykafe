@@ -1,4 +1,36 @@
-p {
-	font-size: 40px;
-	margin-left: 120px;
+body {
+  background-color: #FDFCF8;
+  font-family: 'Montserrat';
+}
+
+h1 {
+   font-size: 36px;
+   font-family: comfortaa;
+   color: #154A76;
+
+}
+
+h2 {
+	font-size: 30px;
+	color: #0BBF71;
+}
+
+h3 {
+	font-size: 24px;
+	color: #F9E263;
+}
+
+h4 {
+	font-size: 18px;
+	color: #052641;
+}
+
+.bold-text {
+	font-weight: bold;
+
+}
+
+.link {
+	color: #40F6A7;
+
 }
