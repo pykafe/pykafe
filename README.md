@@ -12,7 +12,7 @@ loke terminal no ketik etapa sira tuir mai nee:
 No tuir mai
 1. git clone git@github.com:pykafe/pykafe.git
 2. pip install -r requirements.txt
-3. ./manage.py magrate
+3. ./manage.py migrate
 4. ./manage.py createsuperuser
 5. ./manage.py runserver
 
