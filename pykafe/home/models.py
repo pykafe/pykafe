@@ -11,3 +11,11 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
     ]
+
+
+class StyleGuidePage(Page):
+    content = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('content', classname="full")
+    ]
