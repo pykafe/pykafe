@@ -5,7 +5,7 @@
 
 Kria projetu pykafe uza pyenv.
 loke terminal no ketik etapa sira tuir mai nee:
-- pyenv virtualenv pykafe
+- pyenv virtualenv 3.6.6 pykafe
 - kria folder ho naran pykafe
 - cd ba folder pykafe
 - pyenv local pykafe
