@@ -1,42 +1,232 @@
 @font-face {
-  font-family: 'Montserrat';
-  src: url(../fonts/Montserrat-Regular.woff2);
+    font-family: 'Montserrat';
+    src: url(../fonts/Montserrat-Regular.woff2);
 }
 
+@font-face {
+    font-family: 'Comfortaa';
+    src: url(../fonts/Comfortaa_Thin.woff2);
+}
 
 body {
-  background-color: #FDFCF8;
-  font-family: 'Montserrat';
+    background-color: var(--yellow-4);
+    color: #000000c7;
+    font-family: 'Montserrat';
+}
+
+/* PYKAFE LOGOS */
+.logo-1 {
+    font-family: 'Comfortaa';
+    font-size: 44px;
+}
+
+.black-text {
+    font-weight: 600; 
+}
+
+.logo-2 {
+    font-family: 'Comfortaa';
+    color: var(--green-2);
+    font-size: 44px;
+}
+
+.blue-text {
+    color: var(--blue-3);
+    font-weight: 600; 
+}
+
+/* All this rooot colors comes from style guide PDF https://drive.google.com/file/u/1/d/12nPrf28Tj2KQR86IXdVhkkRCI8Z8bsY7/view */ 
+:root {
+    --blue-1: #052641;
+    --blue-2: #154A76;
+    --blue-3: #3E7BAD;
+    --blue-4: #7CC4FF;
+    --green-1: #049254;
+    --green-2: #0BBF71;
+    --green-3: #40F6A7;
+    --yellow-1: #D3B719;
+    --yellow-2: #F9E263;
+    --yellow-3: #FFEF99;
+    --yellow-4: #FDFCF8;
 }
 
 h1 {
-   font-size: 36px;
-   font-family: comfortaa;
-   color: #154A76;
-
+    font-size: 36px;
+    font-family: 'Comfortaa';
+    color: var(--blue-2);
 }
 
 h2 {
-	font-size: 30px;
-	color: #0BBF71;
+    font-family: 'Comfortaa';
+    font-size: 30px;
+    color: var(--green-2);
 }
 
 h3 {
-	font-size: 24px;
-	color: #F9E263;
+    font-family: 'Comfortaa';
+    font-size: 24px;
+    color: var(--yellow-2);
 }
 
 h4 {
-	font-size: 18px;
-	color: #052641;
+    font-size: 18px;
+    color: var(--blue-1);
 }
 
-.bold-text {
-	font-weight: bold;
-
+b {
+    color: var(--blue-1);
 }
 
-.link {
-	color: #40F6A7;
+a {
+    color: var(--green-3);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
 
+a:hover {
+    color: var(--blue-3);
+}
+
+/* STYLING FOR INPUT ELEMENTS */
+input[type=text] {
+    border-radius: 4px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #7f7878;
+    background: #ffffff;
+    outline: none;
+    font-size: 16px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding: 12px 12px;
+}
+
+input[type=text]:focus {
+    z-index: 2;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #154a76;
+    border-radius: 4px;
+    border: 1px solid #3e7bad;
+    background: #ffffff;
+    color: #7cc4ff;
+    outline: none;
+    position: sticky;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.15);
+}
+
+/* BUTTONS STYLES */
+button {
+    font-family: 'Montserrat';
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.42857143;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-default {
+    background-color: var(--yellow-4);
+    border-color: var(--blue-3);
+}
+
+.btn-default:hover {
+    background-color: #c1c1c1;
+}
+
+.btn-primary {
+    color: var(--yellow-4);
+    background-color: var(--blue-2);
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-3);
+}
+
+.btn-success {
+    color: var(--yellow-4);
+    background-color: var(--green-2);
+}
+
+.btn-success:hover {
+    background-color: var(--green-1);
+}
+
+.btn-danger {
+    color: var(--yellow-4);
+    background-color: var(--yellow-2);
+}
+
+.btn-danger:hover {
+    background-color: var(--yellow-1);
+}
+
+.btn-warning {
+    color: var(--yellow-4);
+    background-color: #e48c8c;
+}
+
+.btn-warning:hover {
+    background-color: #ff0000;
+}
+
+/* SPECIFIC COLORS SCHEME FOR DARK THEME */
+.dark-theme {
+    background-color: var(--blue-1);
+    margin-top: 50px;
+    color: var(--yellow-4);
+}
+
+.dark-theme h1 {
+    font-size: 36px;
+    font-family: 'Comfortaa';
+    color: var(--yellow-3);
+}
+
+.dark-theme h2 {
+    font-family: 'Comfortaa';
+    font-size: 30px;
+    color: var(--green-3);
+}
+
+.dark-theme h3 {
+    font-family: 'Comfortaa';
+    font-size: 24px;
+    color: var(--blue-4);
+}
+
+.dark-theme h4 {
+    font-size: 18px;
+    color: var(--yellow-4);
+}
+
+.dark-theme a {
+    color: var(--green-3);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
+
+.dark-theme a:hover {
+    color: var(--blue-4);
+}
+
+.dark-theme b {
+    color: var(--yellow-4);
+    font-weight: 600;
 }
