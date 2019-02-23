@@ -9,6 +9,7 @@
 }
 
 body {
+    margin: 0px;
     background-color: var(--yellow-4);
     color: #000000c7;
     font-family: 'Montserrat';
