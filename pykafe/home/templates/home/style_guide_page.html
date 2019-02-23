@@ -3,5 +3,17 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
+
     {{ page.content|richtext }}
+
+    {% include 'home/includes/style_guide_content.html' %}
+
+    <div class="dark-theme">
+        
+        {% include 'home/includes/style_guide_content.html' %}
+
+        {{ page.content|richtext }}
+
+    </div>
+
 {% endblock %}
