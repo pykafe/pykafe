@@ -231,3 +231,20 @@ button {
     color: var(--yellow-4);
     font-weight: 600;
 }
+
+/* FOOTER */
+.footer {
+    background-color: var(--blue-1);
+    height: 80px;
+}
+
+.footer div {
+    color: white;
+    margin: auto;
+    line-height: 24px;
+}
+
+.footer div .logo-2 {
+    font-size: 18px;
+}
+
