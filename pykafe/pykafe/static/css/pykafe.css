@@ -248,3 +248,7 @@ button {
     font-size: 18px;
 }
 
+/* HEADER */
+.header {
+    background-color: var(--blue-1);
+}
