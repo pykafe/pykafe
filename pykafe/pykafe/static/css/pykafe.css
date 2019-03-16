@@ -15,6 +15,15 @@ body {
     font-family: 'Montserrat';
 }
 
+.base_content {
+    margin-bottom: 80px;
+}
+
+.block-text {
+    margin-right: 15px;
+    margin-left: 15px;
+} 
+
 /* PYKAFE LOGOS */
 .logo-1 {
     font-family: 'Comfortaa';

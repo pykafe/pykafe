@@ -9,5 +9,5 @@
     <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ page_image.url }}');background-size: cover;height: 500px;">
     </div>
 
-    {{ page.body|richtext }}
+    {% include_block page.body %}
 {% endblock %}
