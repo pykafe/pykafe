@@ -16,17 +16,25 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+')
 
-    body = StreamField([('text', PykafeRichBlock())])
+    body = StreamField([('paragraph', PykafeRichBlock())])
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
-        StreamFieldPanel('body'),
+        StreamFieldPanel('body', classname="full"),
     ]
-
+    subpage_types = ["home.BasePage"]
 
 class StyleGuidePage(Page):
     content = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('content', classname="full")
+    ]
+
+
+class BasePage(Page):
+    body = StreamField([('paragraph', PykafeRichBlock())])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body')
     ]
