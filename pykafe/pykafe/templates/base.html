@@ -35,7 +35,9 @@
         {% include 'includes/header.html' %}
         {% wagtailuserbar %}
 
+        <div class="base_content">
         {% block content %}{% endblock %}
+        </div>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/pykafe.js' %}"></script>
