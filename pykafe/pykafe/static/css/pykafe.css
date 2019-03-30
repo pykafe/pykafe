@@ -25,6 +25,10 @@ body {
     margin-right: 80px;
 }
 
+.block-paragraph h3 > b {
+    color: var(--yellow-2);
+}
+
 .block-text {
     margin-right: 15px;
     margin-left: 15px;
