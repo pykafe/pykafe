@@ -33,7 +33,9 @@ class StyleGuidePage(Page):
 
 
 class BasePage(Page):
-    body = StreamField([('paragraph', PykafeRichBlock())])
+    body = StreamField([
+                ('paragraph', PykafeRichBlock())        
+        ], blank=True)
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('body')
