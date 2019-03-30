@@ -266,7 +266,7 @@ button {
 /* HEADER */
 .header {
     background-color: var(--blue-1);
-	border-bottom: none;
+    border-bottom: none;
 }
 
 .header a {
