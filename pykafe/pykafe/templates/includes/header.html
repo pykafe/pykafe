@@ -1,7 +1,7 @@
 {% load pykafe %}
 {% load wagtailcore_tags %}
 
-<nav class="navbar navbar-expand-lg navbar-dark header">
+<nav class="navbar navbar-expand-lg header">
   {% get_site_root as home %}
   <a class="navbar-brand" href="{% pageurl home %}">
     {% include 'includes/logo_colours.html' %}
@@ -14,13 +14,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
       {% for page in home.get_children %}
+      <li class="nav-item {% if self.url_path|startswith:page.url_path %} active {% endif %}">
       <a class="navbar-brand" href="{% pageurl page %}">
           {{ page.title }}
       </a>
-      {% endfor %}
       </li>
+      {% endfor %}
     </ul>
   <!-- 
     <form class="form-inline my-2 my-lg-0">
@@ -29,6 +29,5 @@
     </form>
     -->
   </div>
-
 
 </nav>

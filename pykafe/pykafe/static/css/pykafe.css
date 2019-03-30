@@ -260,4 +260,13 @@ button {
 /* HEADER */
 .header {
     background-color: var(--blue-1);
+	border-bottom: none;
+}
+
+.header a {
+    border-bottom: none;
+}
+
+li.nav-item.active a {
+    color: white;
 }
