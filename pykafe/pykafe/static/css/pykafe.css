@@ -19,6 +19,11 @@ body {
     margin-bottom: 80px;
 }
 
+.block-paragraph {
+    margin-top: 80px;
+    margin-left: 80px;
+    margin-right: 80px;
+
 .block-text {
     margin-right: 15px;
     margin-left: 15px;
