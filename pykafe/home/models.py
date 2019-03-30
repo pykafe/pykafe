@@ -20,7 +20,7 @@ class HomePage(Page):
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
-        StreamFieldPanel('body', classname="full"),
+        StreamFieldPanel('body'),
     ]
     subpage_types = ["home.BasePage"]
 
