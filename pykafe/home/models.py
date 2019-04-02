@@ -6,7 +6,7 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-from .blocks import PykafeRichBlock
+from .blocks import PykafeRichBlock, blogRichBlock
 
 class HomePage(Page):
     image = models.ForeignKey(
@@ -16,7 +16,12 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+')
 
-    body = StreamField([('paragraph', PykafeRichBlock())])
+    body = StreamField(
+            [
+                ('paragraph', PykafeRichBlock()),
+                ('blog', blogRichBlock())
+            ]
+        )
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),

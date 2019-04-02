@@ -1,4 +1,5 @@
 from wagtail.core import blocks
+from wagtail.images.blocks import ImageChooserBlock
 
 class PykafeRichBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(help_text='lsknlknflknlas dlajs lajs lajs f')
@@ -6,3 +7,23 @@ class PykafeRichBlock(blocks.StructBlock):
 
     class Meta:
         template = 'home/blocks/pykafe_rich_block.html'
+
+
+class blogRichBlock(blocks.StructBlock):
+    """Blog with image and text button(s)"""
+    title = blocks.CharBlock(required=True, help_text="Add your title")
+    blogs = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("image", ImageChooserBlock(required=True)),
+                ("title", blocks.CharBlock(required=True, max_length=22)),
+                ("text", blocks.TextBlock(required=True, max_length=400)),
+                ("button_Page", blocks.PageChooserBlock(required=False)),
+            ]
+        )
+    )
+
+    class Meta:
+        template = 'home/blocks/blog_rich_block.html'
+        icon = "placeholder"
+        label = "Add activities"
