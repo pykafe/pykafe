@@ -280,3 +280,21 @@ button {
 li.nav-item.active a {
     color: white;
 }
+
+/* Blog activities */
+
+.block-blog {
+    background-color: #098488;
+    margin-top: 70px;
+}
+
+.title-activities {
+    text-align: center;
+    margin: 50px;
+    font-size: 24px;
+}
+
+.blog-activities {
+    margin: 15px;
+    text-align: justify;
+}

@@ -15,8 +15,8 @@ class blogRichBlock(blocks.StructBlock):
     blogs = blocks.ListBlock(
         blocks.StructBlock(
             [
-                ("image", ImageChooserBlock(required=True)),
                 ("title", blocks.CharBlock(required=True, max_length=22)),
+                ("image", ImageChooserBlock(required=True)),
                 ("text", blocks.TextBlock(required=True, max_length=400)),
                 ("button_Page", blocks.PageChooserBlock(required=False)),
             ]

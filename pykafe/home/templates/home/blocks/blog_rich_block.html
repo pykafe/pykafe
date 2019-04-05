@@ -1,16 +1,18 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
-<div class="container"
-	<h1>{{ self.title }}</h1>
-	<div class="card-columns">
+<div class="container">
+     	<div class="title-activities">
+		{{ self.title }}
+	</div>
+	<div class="card-deck">
 		{% for blog in self.blogs %}
-		{% image blog.image fill-300x200 as img %}
-		<div class="blog" style="width: 18rem;">
-			<img src="{{ img.url }}" class="blog-img-top" alt="{{ img.alt }}">
+		<div class="blog-activities" style="width: 18rem;">
 		  <div class="blog-body">
-			  <h5 class="blog-title">{{ blog.title }}</h5>
-			  <p class="blog-text">{{ blog.text }}</p>
+			<h5 class="blog-title">{{ blog.title }}</h5>
+			{% image blog.image fill-300x200 as img %}
+			<img src="{{ img.url }}" class="blog-img-top" alt="{{ img.alt }}">
+			<p class="blog-text">{{ blog.text }}</p>
 		    <a href="#" class="btn btn-primary">More Details</a>
 		  </div>
 		</div>
