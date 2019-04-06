@@ -12,8 +12,8 @@
 			<h5 class="blog-title">{{ blog.title }}</h5>
 			{% image blog.image fill-300x200 as img %}
 			<img src="{{ img.url }}" class="blog-img-top" alt="{{ img.alt }}">
-			<p class="blog-text">{{ blog.text }}</p>
-		    <a href="#" class="btn btn-primary">More Details</a>
+			<p class="blog-text">{{ blog.description | richtext }}</p>
+		    <a href="{% pageurl blog %}" class="btn btn-primary">More Details</a>
 		  </div>
 		</div>
 		{% endfor %}
