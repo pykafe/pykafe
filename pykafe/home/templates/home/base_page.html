@@ -5,7 +5,7 @@
 
 {% block body_class %}template-basepage{% endblock %}
 {% block content %}
-    {% image page.image fill-
+    {% image page.image fill-300x200 %}
     {% include_block page.body %}
     {{ page.description|richtext }}
 {% endblock %}
