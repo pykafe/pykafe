@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block body_class %}template-basepage{% endblock %}
 {% block content %}
+    {% image page.image fill-
     {% include_block page.body %}
+    {{ page.description|richtext }}
 {% endblock %}

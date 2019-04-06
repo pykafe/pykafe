@@ -1,12 +1,13 @@
 from django.db import models
 
-from wagtail.core import blocks
+
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from .blocks import PykafeRichBlock, blogRichBlock
+
 
 class HomePage(Page):
     image = models.ForeignKey(
@@ -29,6 +30,7 @@ class HomePage(Page):
     ]
     subpage_types = ["home.BasePage"]
 
+
 class StyleGuidePage(Page):
     content = RichTextField(blank=True)
 
@@ -38,10 +40,19 @@ class StyleGuidePage(Page):
 
 
 class BasePage(Page):
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+')
+    description = RichTextField(blank=True)
     body = StreamField([
-                ('paragraph', PykafeRichBlock())        
+                ('paragraph', PykafeRichBlock())
         ], blank=True)
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('body')
+        StreamFieldPanel('body'),
+        ImageChooserPanel('image'),
+        FieldPanel('description')
     ]
