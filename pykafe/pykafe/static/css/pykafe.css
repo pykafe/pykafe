@@ -284,14 +284,24 @@ li.nav-item.active a {
 /* Blog activities */
 
 .block-blog {
-    background-color: #098488;
+    background-color: var(--blue-1);
     margin-top: 70px;
 }
 
+.card {
+    background-color: var(--blue-1);
+}
+.card-body {
+    color: #f8f9fa;
+}
+
 .title-activities {
+    font-family: 'Comfortaa';
     text-align: center;
     margin: 50px;
-    font-size: 24px;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--green-3);
 }
 
 .blog-activities {
