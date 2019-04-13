@@ -12,11 +12,11 @@
     {% for blog in self.blogs %}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <div class="card">
+                <div class="card-title">
+                    {{ blog.title }}
+                </div>
                 {% image blog.image fill-300x200 class="card-img-top" %}
                 <div class="card-body">
-                    <h5 class="card-title">
-                        {{ blog.title }}
-                    </h5>
                     <p class="card-text">{{ blog.description | richtext }}</p>
                     <a href="{% pageurl blog %}" class="btn btn-primary">{% trans 'More Detail' %}</a>
                 </div>

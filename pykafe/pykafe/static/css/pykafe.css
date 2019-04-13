@@ -295,10 +295,18 @@ li.nav-item.active a {
     color: #f8f9fa;
 }
 
+.card-title {
+    font-family: 'Comfortaa';
+    font-size: 24px;
+    text-align: center;
+    color: var(--blue-3);
+}
+
 .title-activities {
     font-family: 'Comfortaa';
     text-align: center;
-    margin: 50px;
+    margin: 40px;
+    margin-bottom:20px;
     font-size: 30px;
     font-weight: bold;
     color: var(--green-3);
