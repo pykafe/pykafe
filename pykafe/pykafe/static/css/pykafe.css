@@ -293,6 +293,8 @@ li.nav-item.active a {
 }
 .card-body {
     color: #f8f9fa;
+    padding: 0rem; 
+    margin-bottom: 40px;
 }
 
 .card-title {
@@ -315,4 +317,8 @@ li.nav-item.active a {
 .blog-activities {
     margin: 15px;
     text-align: justify;
+}
+
+.btn-button {
+    border-bottom: none;
 }
