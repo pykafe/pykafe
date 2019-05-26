@@ -6,7 +6,7 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-from .blocks import PykafeRichBlock, blogRichBlock
+from .blocks import PykafeRichBlock, BlogRichBlock
 
 
 class HomePage(Page):
@@ -20,7 +20,7 @@ class HomePage(Page):
     body = StreamField(
             [
                 ('paragraph', PykafeRichBlock()),
-                ('blog', blogRichBlock())
+                ('blog', BlogRichBlock())
             ]
         )
 
