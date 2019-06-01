@@ -46,7 +46,7 @@ class BasePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+')
-    description = RichTextField(blank=True)
+    description = RichTextField(blank=True, features=['bold', 'italic'])
     body = StreamField([
                 ('paragraph', PykafeRichBlock())
         ], blank=True)

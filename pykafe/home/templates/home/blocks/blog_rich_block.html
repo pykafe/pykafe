@@ -2,7 +2,7 @@
 {% load wagtailimages_tags %}
 {% load i18n %}
 
-<div class="container">
+<div class="container dark-theme">
     <div class="row">
         <div class="col-md-12 title-activities">
             <p>{{ self.title }}</p>
@@ -10,6 +10,7 @@
     </div>
     <div class="row">
     {% for blog in self.blogs %}
+        {% if blog.description and blog.image %}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <div class="card">
                 <div class="card-title">
@@ -22,6 +23,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     {% endfor %}
     </div>
 </div>

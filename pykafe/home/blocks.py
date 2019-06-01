@@ -18,7 +18,7 @@ class BlogRichBlock(blocks.StructBlock):
     """Blog with image and text button(s)"""
     title = blocks.CharBlock(required=True, help_text="Add your title")
     blogs = blocks.ListBlock(
-               blocks.PageChooserBlock(target_model="home.BasePage")
+               blocks.PageChooserBlock(target_model="home.BasePage", help_text='If your page does not have both an image and a description it will not show up!')
     )
 
     class Meta:
