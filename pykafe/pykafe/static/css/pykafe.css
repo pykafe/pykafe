@@ -280,3 +280,45 @@ button {
 li.nav-item.active a {
     color: white;
 }
+
+/* Blog activities */
+
+.block-blog {
+    background-color: var(--blue-1);
+    margin-top: 70px;
+}
+
+.card {
+    background-color: var(--blue-1);
+}
+.card-body {
+    color: #f8f9fa;
+    padding: 0rem; 
+    margin-bottom: 40px;
+}
+
+.card-title {
+    font-family: 'Comfortaa';
+    font-size: 24px;
+    text-align: center;
+    color: var(--blue-3);
+}
+
+.title-activities {
+    font-family: 'Comfortaa';
+    text-align: center;
+    margin: 40px;
+    margin-bottom:20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--green-3);
+}
+
+.blog-activities {
+    margin: 15px;
+    text-align: justify;
+}
+
+.btn-button {
+    border-bottom: none;
+}
