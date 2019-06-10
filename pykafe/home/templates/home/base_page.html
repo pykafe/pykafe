@@ -6,9 +6,15 @@
 {% block body_class %}template-basepage{% endblock %}
 {% block content %}
     {% image page.image original as page_image %}
-    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ page_image.url }}');background-size: cover;height: 500px;"></div>
     <div class="container">
         <h2>{% include_block page.body %}</h2>
-        <p>{{ page.description|richtext }}</p>
+        <div class="row">
+            <div class="col-md-7">
+                <p>{{ page.description|richtext }}</p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ page_image.url }}" alt="actividade" height="450" width="480">
+            </div>
+        </div>
     </div>
 {% endblock %}
