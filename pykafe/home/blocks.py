@@ -14,7 +14,7 @@ class PykafeRichBlock(blocks.StructBlock):
         template = 'home/blocks/pykafe_rich_block.html'
 
 
-class BlogRichBlock(blocks.StructBlock):
+class ActivityLinkBlock(blocks.StructBlock):
     """Blog with image and text button(s)"""
     title = blocks.CharBlock(required=True, help_text="Add your title")
     blogs = blocks.ListBlock(
@@ -24,4 +24,4 @@ class BlogRichBlock(blocks.StructBlock):
     class Meta:
         template = 'home/blocks/blog_rich_block.html'
         icon = "placeholder"
-        label = "Add activities"
+        label = "Add activities Link"
