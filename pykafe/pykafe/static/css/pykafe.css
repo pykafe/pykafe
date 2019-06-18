@@ -322,3 +322,29 @@ li.nav-item.active a {
 .btn-button {
     border-bottom: none;
 }
+
+.circle-title {
+    background-color: var(--blue-1);
+    height: 57px;
+    border-radius: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 409px;
+}
+
+.circle-description {
+    background-color: #FDFCF8;
+    border-radius: 40px;
+    border: 3px solid #FFEF99;
+    margin-top: 46px;
+}
+
+.blog-title {
+    font-family: 'Comfortaa';
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
