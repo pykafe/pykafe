@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="container circle-description">
-        <p>{% include_block page.body %}</p>
         <p>{{ page.description|richtext }}</p>
+        <p>{% include_block page.body %}</p>
     </div>
 {% endblock %}
