@@ -8,10 +8,11 @@
     {% image page.image original as page_image %}
     <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ page_image.url }}');background-size: cover;height: 500px;">
         <div class="circle-title blog-title">
-            <p>{% include_block page.body %}</p>
+            <p>{% include_block page.title %}</p>
         </div>
     </div>
     <div class="container circle-description">
+        <p>{% include_block page.body %}</p>
         <p>{{ page.description|richtext }}</p>
     </div>
 {% endblock %}
