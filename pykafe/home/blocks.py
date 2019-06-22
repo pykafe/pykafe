@@ -28,7 +28,7 @@ class BlogRichBlock(blocks.StructBlock):
 
 
 class PykafeMap(blocks.StructBlock):
-    title = blocks.CharBlock(help_text='enter the title of the map')
+    title = blocks.CharBlock(help_text='Enter the title of the map')
     location_lat = blocks.DecimalBlock(max_value=90, min_value=-90, max_digits=15)
     location_long = blocks.DecimalBlock(max_value=180, min_value=-180, max_digits=15)
     zoom = blocks.DecimalBlock(max_value=21, min_value=0)
