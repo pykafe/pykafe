@@ -3,7 +3,7 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class PykafeRichBlock(blocks.StructBlock):
-    text = blocks.RichTextBlock(help_text='lsknlknflknlas dlajs lajs lajs f')
+    text = blocks.RichTextBlock(help_text='WYSIWYG text')
     align = blocks.ChoiceBlock(choices=(
                ('left', 'Left'), ('right', 'Right'),
                ('center', 'Center'), ('justify', 'Justify')),
@@ -14,17 +14,16 @@ class PykafeRichBlock(blocks.StructBlock):
         template = 'home/blocks/pykafe_rich_block.html'
 
 
-class BlogRichBlock(blocks.StructBlock):
-    """Blog with image and text button(s)"""
+class PageLinksBlock(blocks.StructBlock):
+    """Titled list of links to pages"""
     title = blocks.CharBlock(required=True, help_text="Add your title")
-    blogs = blocks.ListBlock(
+    pages = blocks.ListBlock(
                blocks.PageChooserBlock(target_model="home.BasePage", help_text='If your page does not have both an image and a description it will not show up!')
     )
 
     class Meta:
-        template = 'home/blocks/blog_rich_block.html'
+        template = 'home/blocks/page_links_block.html'
         icon = "placeholder"
-        label = "Add activities"
 
 
 class PykafeMap(blocks.StructBlock):
