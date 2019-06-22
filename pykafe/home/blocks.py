@@ -25,3 +25,13 @@ class BlogRichBlock(blocks.StructBlock):
         template = 'home/blocks/blog_rich_block.html'
         icon = "placeholder"
         label = "Add activities"
+
+
+class PykafeMap(blocks.StructBlock):
+    title = blocks.CharBlock(help_text='Enter the title of the map')
+    location_lat = blocks.DecimalBlock(max_value=90, min_value=-90, max_digits=15)
+    location_long = blocks.DecimalBlock(max_value=180, min_value=-180, max_digits=15)
+    zoom = blocks.DecimalBlock(max_value=21, min_value=0)
+
+    class Meta:
+        template = 'home/blocks/pykafe_map.html'
