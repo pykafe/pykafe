@@ -57,6 +57,7 @@ body {
 
 /* All this rooot colors comes from style guide PDF https://drive.google.com/file/u/1/d/12nPrf28Tj2KQR86IXdVhkkRCI8Z8bsY7/view */ 
 :root {
+    --white-1: #ffffff;
     --blue-1: #052641;
     --blue-2: #154A76;
     --blue-3: #3E7BAD;
@@ -105,6 +106,7 @@ a {
 
 a:hover {
     color: var(--blue-3);
+    text-decoration: none
 }
 
 /* STYLING FOR INPUT ELEMENTS */
@@ -255,6 +257,7 @@ button {
 .footer {
     background-color: var(--blue-1);
     height: 80px;
+    position: relative;
 }
 
 .footer div {
@@ -321,4 +324,28 @@ li.nav-item.active a {
 
 .btn-button {
     border-bottom: none;
+}
+
+.circle-title {
+    margin-top: 333px;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+}
+
+.circle-description {
+    border-radius: 3px;
+    border: 1px solid #e9ecef;
+    margin-top: 36px;
+    margin-bottom: 36px;
+}
+
+.blog-title {
+    font-family: 'Comfortaa';
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: bold;
+    border-bottom-style: ridge;
+    color: var(--white-1);
 }
