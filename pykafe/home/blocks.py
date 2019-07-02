@@ -11,7 +11,7 @@ class PykafeRichBlock(blocks.StructBlock):
      )
 
     class Meta:
-        template = 'home/blocks/pykafe_rich_block.html'
+        template = 'home/blocks/page_links_block.html'
 
 
 class PageLinksBlock(blocks.StructBlock):
@@ -22,7 +22,7 @@ class PageLinksBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = 'home/blocks/page_links_block.html'
+        template = 'home/blocks/pykafe_rich_block.html'
         icon = "placeholder"
 
 
