@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags widget_tweaks %}
+
+
+{% block content %}
+
+<div class="container">
+    <p>{{ self.intro|richtext }}</p>
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+            <div class="card" style="margin-top:50px">
+                <div class="card-title title-activities">
+                    <p>Contact US</p>
+                </div>
+                <div class="card-body">
+                    <form action="{% pageurl page %}" method="POST">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                          <div class="alert alert-danger" role="alert">
+                            {% for error in form.non_field_errors %}
+                              {{ error }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+
+                          <div class="form-group">
+                            {% render_field form.name class="form-control form-color" placeholder="Name" %}
+                            {% render_field form.email class="form-control form-color" placeholder="Email" %}
+                            {% render_field form.subject class="form-control form-color" placeholder="Subject" %}
+                            {% render_field form.messages class="form-control form-color" placeholder="Messages" %}
+                          </div>
+
+                        <button type="submit" class="btn btn-primary submit-button" >Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

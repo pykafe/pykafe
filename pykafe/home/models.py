@@ -29,7 +29,7 @@ class HomePage(Page):
         ImageChooserPanel('image'),
         StreamFieldPanel('body'),
     ]
-    subpage_types = ["home.BasePage"]
+    subpage_types = ["home.BasePage", "contact.ContactPage"]
 
 
 class StyleGuidePage(Page):
