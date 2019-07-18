@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
-{% load static wagtailcore_tags widget_tweaks %}
+
+{% load static wagtailcore_tags widget_tweaks i18n %}
+{% load wagtailimages_tags %}
 
 
 {% block content %}
+    {% image page.image original as page_image %}
+
+<div class="jumbotron jumbotron-fluid" style="background-image: url('{{ page_image.url }}');background-size: cover;height: 500px;">
+    <div class="circle-title blog-title">
+        <p>{% include_block page.title %}</p>
+    </div>
+</div>
 
 <div class="container">
     <div class="row">
@@ -10,7 +19,7 @@
         <form action="{% pageurl page %}" method="POST">
             {% csrf_token %}
             <div class="form-row">
-                <h2>Contact Us</h2>
+                <h2>{% trans 'Contact Us' %}</h2>
             </div>
             {% if form.non_field_errors %}
             <div class="alert alert-danger" role="alert">
@@ -33,7 +42,7 @@
           <div class="form-group">
                 {% render_field form.messages class="form-control form-color" placeholder="Messages" %}
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
         </form>
     </div>
 </div>

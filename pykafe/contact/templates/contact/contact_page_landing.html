@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load static wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block content %}
-<div class="container">
-    <p>
-        {{ self.thank_you_text|richtext }}
-    </p>
-</div>
+    {% image page.image original as page_image %}
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ page_image.url }}');background-size: cover;height: 500px;">
+        <div class="circle-title blog-title">
+            <p>{% include_block page.title %}</p>
+        </div>
+    </div>
+    <div class="container">
+        <p>{{ self.thank_you_text|richtext }}</p>
+    </div>
 {% endblock %}

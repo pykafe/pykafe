@@ -3,6 +3,7 @@ from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from modelcluster.fields import ParentalKey
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     FieldRowPanel,
@@ -21,11 +22,18 @@ class FormField(AbstractFormField):
 
 
 class ContactPage(AbstractEmailForm):
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+')
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
         InlinePanel('custom_form_fields', label="Form fields"),
+        ImageChooserPanel('image'),
         FieldPanel('intro', classname="full"),
         FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel([
