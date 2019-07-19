@@ -359,4 +359,11 @@ li.nav-item.active a {
     margin-top: 6px;
 }
 
+.btn-submit {
+    border-radius: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    opacity: 0.8;
+}
+
 
