@@ -1,0 +1,38 @@
+{% load static i18n %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Contact Us</title>
+        <style>
+            .style-contact {
+                color: #555;
+                border: 4px solid #052641;
+                border-radius: 10px;
+                font-family: 'Comfortaa';
+                font-size: 17px;
+                padding: 10px 10px 10px 36px;
+                margin: 10px;
+            }
+            .logo-2 {
+                font-family: 'Comfortaa';
+                color: #0bbf71;
+                font-size: 44px;
+            }
+            .blue-text {
+                color: #3e7bad;
+                font-weight: 600; 
+            }
+        </style>
+    </head>
+    <body class="style-contact">
+        <b>
+            <span class="logo-2">Py<span class="blue-text">Kafe</span></span>
+        </b>
+        <p>{% trans "Name" %}: {{ Name }}</p> 
+        <p>{% trans "Email" %}: {{ Email }}</p> 
+        <h4>{% trans "Subject" %}: {{ Subject }}</h4> 
+        <p>{% trans "Messages" %}: {{ Messages }}</p> 
+        <p>{% trans "Submitted" %}: {{ Submitted }}</p> 
+        <p>{% trans "Submitted Via" %}: <a href="{{ Submitted_Via }}">{{ Submitted_Via }}</a></p> 
+    </body>
+</html>
