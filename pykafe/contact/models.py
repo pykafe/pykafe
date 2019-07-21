@@ -12,7 +12,9 @@ from wagtail.admin.edit_handlers import (
 )
 
 from django.forms.fields import EmailField
-from wagtail.admin.utils import send_mail
+#from wagtail.admin.utils import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 from datetime import date
 
 # Create your models here.
@@ -50,15 +52,17 @@ class ContactPage(AbstractEmailForm):
 
     def send_mail(self, form):
         addresses = [x.strip() for x in self.to_address.split(',')]
-        content = []
+        content_dict = {}
         for field in form:
             value = field.value()
             if isinstance(value, list):
                 value = ', '.join(value)
-            content.append('{}: {}'.format(field.label, value))
+            content_dict.update({ field.label: value })
         submitted_date_str = date.today().strftime('%x')
-        content.append('{}: {}'.format('Submitted', submitted_date_str))
-        content.append('{}: {}'.format('Submitted Via', self.full_url))
-        content = '\n'.join(content)
-        subject = self.subject + " - " + submitted_date_str
-        send_mail(subject, content, addresses, self.from_address)
+        content_dict.update({'Submitted': submitted_date_str})
+        content_dict.update({'Submitted_Via': self.full_url})
+        content_html = render_to_string('contact/contact_us_email.html', content_dict)
+        messages = EmailMultiAlternatives(self.subject, content_html, self.from_address, [addresses])
+        messages.mixed_subtype = 'related'
+        messages.attach_alternative(content_html, "text/html")
+        messages.send()
