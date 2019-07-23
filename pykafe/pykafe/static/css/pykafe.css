@@ -348,22 +348,12 @@ li.nav-item.active a {
     font-weight: bold;
     border-bottom-style: ridge;
     color: var(--white-1);
+    text-shadow: 1px 1px 2px #6bd6e6, 0 0 1em rgba(107,214,230,.7), 0 0 0.2em rgba(107,214,230,.7);
 }
 
 .form-control.form-color {
-    border: 1px solid #349DB1;
-    border-radius: 2rem;
-    font-size: 1.25rem;
     line-height:1.5;
     padding: 1.5rem 2rem;
     margin-top: 6px;
 }
-
-.btn-submit {
-    border-radius: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
-    opacity: 0.8;
-}
-
 
