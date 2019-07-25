@@ -58,7 +58,7 @@ class ContactPage(AbstractEmailForm):
             if isinstance(value, list):
                 value = ', '.join(value)
             content_dict.update({ field.label: value })
-        submitted_date_str = date.today().strftime('%x')
+        submitted_date_str = date.today().strftime('%d %b %Y %H:%M %p')
         content_dict.update({'Submitted': submitted_date_str})
         content_dict.update({'Submitted_Via': self.full_url})
         content_html = render_to_string('contact/contact_us_email.html', content_dict)
