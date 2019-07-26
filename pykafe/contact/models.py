@@ -24,6 +24,7 @@ class FormField(AbstractFormField):
 
 
 class ContactPage(AbstractEmailForm):
+    image_title = models.CharField(max_length=255, blank=True,)
     image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -35,6 +36,7 @@ class ContactPage(AbstractEmailForm):
 
     content_panels = AbstractEmailForm.content_panels + [
         InlinePanel('custom_form_fields', label="Form fields"),
+        FieldPanel('image_title', classname="full"),
         ImageChooserPanel('image'),
         FieldPanel('intro', classname="full"),
         FieldPanel('thank_you_text', classname="full"),
