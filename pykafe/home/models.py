@@ -41,6 +41,7 @@ class StyleGuidePage(Page):
 
 
 class BasePage(Page):
+    image_title = models.CharField(max_length=255, blank=True,)
     image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -54,6 +55,7 @@ class BasePage(Page):
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
+        FieldPanel('image_title', classname="full"),
         ImageChooserPanel('image'),
         FieldPanel('description')
     ]

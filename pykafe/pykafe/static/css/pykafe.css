@@ -352,7 +352,6 @@ li.nav-item.active a {
     margin-bottom: 30px;
     font-size: 36px;
     font-weight: bold;
-    border-bottom-style: ridge;
     color: var(--white-1);
     text-shadow: 1px 1px 2px #6bd6e6, 0 0 1em rgba(107,214,230,.7), 0 0 0.2em rgba(107,214,230,.7);
 }
