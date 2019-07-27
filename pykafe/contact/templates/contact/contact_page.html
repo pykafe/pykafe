@@ -16,13 +16,7 @@
 <div class="container">
   <p>{{ self.intro|richtext }}</p>
   <div class="row">
-    <div class="col-md-6">
-       <p>Avenida Colmera Dili, Timor-Leste</p>
-       <p>Address: R. Nicolau dos Reis Lobato, Colmera-Díli</p>
-       <p>Phone: +67076666663</p>
-       {{ self.body }}
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <form action="{% pageurl page %}" method="POST">
           {% csrf_token %}
           {% if form.non_field_errors %}
@@ -54,6 +48,14 @@
             </div>
           </div>
         </form>
+    </div>
+    <div class="col-md-4">
+        <h3>{% trans 'Our Place' %}</h3>
+        <span>{% trans 'Street Address' %}</span>
+        <br>
+        <span>{% trans 'Rua Nicolau dos Reis Lobato, Colmera-Díli' %}</span>
+        <hr>
+        {{ self.body }}
     </div>
   </div>
 </div>
