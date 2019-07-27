@@ -17,8 +17,10 @@
   <p>{{ self.intro|richtext }}</p>
   <div class="row">
     <div class="col-md-6">
-       <p>Avnida Colmera Dili, Timor-Leste</p>
-       {% include 'home/blocks/pykafe_map.html' %}
+       <p>Avenida Colmera Dili, Timor-Leste</p>
+       <p>Address: R. Nicolau dos Reis Lobato, Colmera-Díli</p>
+       <p>Phone: +67076666663</p>
+       {{ self.body }}
     </div>
     <div class="col-md-6">
         <form action="{% pageurl page %}" method="POST">

@@ -8,7 +8,8 @@ from wagtail.admin.edit_handlers import (
     FieldPanel,
     FieldRowPanel,
     InlinePanel,
-    MultiFieldPanel
+    MultiFieldPanel,
+    StreamFieldPanel
 )
 
 from django.forms.fields import EmailField
@@ -16,6 +17,7 @@ from django.forms.fields import EmailField
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from datetime import date
+from home.blocks import PykafeMap
 
 # Create your models here.
 
@@ -33,12 +35,18 @@ class ContactPage(AbstractEmailForm):
         related_name='+')
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
+    body = StreamField(
+            [
+                ('map', PykafeMap())
+            ]
+        )
 
     content_panels = AbstractEmailForm.content_panels + [
         InlinePanel('custom_form_fields', label="Form fields"),
         FieldPanel('image_title', classname="full"),
         ImageChooserPanel('image'),
         FieldPanel('intro', classname="full"),
+        StreamFieldPanel('body'),
         FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel([
             FieldRowPanel([
