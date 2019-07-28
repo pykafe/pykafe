@@ -26,6 +26,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+    'contact',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'widget_tweaks',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -122,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dili'
 
 USE_I18N = True
 
