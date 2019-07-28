@@ -142,6 +142,7 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, '../node_modules'),
     os.path.join(PROJECT_DIR, 'static'),
 ]
 
