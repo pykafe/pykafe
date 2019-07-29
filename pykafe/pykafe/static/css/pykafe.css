@@ -362,3 +362,22 @@ li.nav-item.active a {
     margin-top: 6px;
 }
 
+ul.navbar-nav {
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+@media screen and (max-width: 992px) {
+    button.navbar-toggler {
+        border-color: var(--gray);
+        padding: 0px;
+    }
+
+	.navbar-toggler-icon {
+        display: block;
+        width: 33px;
+        height: 3px;
+        background: var(--gray);
+        margin: 9px;
+    }
+}
