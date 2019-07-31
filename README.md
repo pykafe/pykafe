@@ -10,12 +10,16 @@ loke terminal no ketik etapa sira tuir mai nee:
 - cd ba folder pykafe
 - pyenv local pykafe
 
-No tuir mai
+Atu setup yarn mak hanesan tuir mai ne'e:
+```curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - sudo apt-get install -y nodejs curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list sudo apt-get update && sudo apt-get install yarn```
+
+No tuir mai:
 1. git clone git@github.com:pykafe/pykafe.git
 2. pip install -r requirements.txt
-3. ./manage.py migrate
-4. ./manage.py createsuperuser
-5. ./manage.py runserver
+3. yarn install
+4. ./manage.py migrate
+5. ./manage.py createsuperuser
+6. ./manage.py runserver
 
 
 
