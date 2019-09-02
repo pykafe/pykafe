@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'contact',
+    'tracking',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = (
+    'tracking.middleware.VisitorTrackingMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -167,3 +169,11 @@ WAGTAIL_SITE_NAME = "pykafe"
 BASE_URL = 'http://example.com'
 
 GOOGLE_MAPS_API_KEY = "AIzaSyC7arOtQOhxhc9ozCnJ5YcuAMI_fJ5UqqA"
+
+# tracking users
+TRACK_AJAX_REQUESTS = True
+TRACK_SUPERUSERS = False
+TRACK_PAGEVIEWS = True
+TRACK_IGNORE_STATUS_CODES = [400, 404, 403, 405, 410, 500]
+TRACK_REFERER = True
+TRACK_QUERY_STRING = True
