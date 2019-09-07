@@ -280,6 +280,7 @@ button {
 .header {
     background-color: var(--blue-1);
     border-bottom: none;
+    padding: 0px;
 }
 
 .header a {
@@ -365,6 +366,10 @@ li.nav-item.active a {
 ul.navbar-nav {
     margin-left: auto;
     margin-right: 0px;
+}
+
+.navbar-header {
+    padding: 0px;
 }
 
 @media screen and (max-width: 992px) {
