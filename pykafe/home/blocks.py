@@ -1,5 +1,7 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
+from wagtailcodeblock.blocks import CodeBlock
 
 
 class PykafeRichBlock(blocks.StructBlock):
@@ -34,3 +36,25 @@ class PykafeMap(blocks.StructBlock):
 
     class Meta:
         template = 'home/blocks/pykafe_map.html'
+
+# Kria Rich block ba content 
+class LearnRichBlock(blocks.StructBlock):
+    text = blocks.RichTextBlock(required=False, help_text='WYSIWYG text')
+    code = CodeBlock(label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)
+    align = blocks.ChoiceBlock(choices=(
+               ('left', 'Left'), ('right', 'Right'),
+               ('center', 'Center'), ('justify', 'Justify')),
+               required=True, default=('left', 'Left')
+     )
+
+    class Meta:
+        template = 'home/blocks/learn_rich_block.html'
+
+
+#Kria Rich block ba category
+class CategoryRichBlock(blocks.StructBlock):
+    category_type = blocks.CharBlock(required=False, help_text="Add your title")
+    categories = SnippetChooserBlock('home.LearnCategory')
+
+    class Meta:
+        template = 'home/blocks/learn_rich_block.html'
