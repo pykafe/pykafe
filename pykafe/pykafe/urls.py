@@ -8,8 +8,8 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
+
 urlpatterns = [
-    url(r'^tracking/', include('tracking.urls')),
     url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/', include(wagtailadmin_urls)),
