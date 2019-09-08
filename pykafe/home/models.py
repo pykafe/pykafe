@@ -9,7 +9,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from .blocks import PykafeRichBlock, PageLinksBlock, PykafeMap, LearnRichBlock, CategoryRichBlock
+from .blocks import PykafeRichBlock, PageLinksBlock, PykafeMap, LearnRichBlock, CategoryRichBlock, CodeRichBlock
 
 
 class HomePage(Page):
@@ -32,7 +32,7 @@ class HomePage(Page):
         ImageChooserPanel('image'),
         StreamFieldPanel('body'),
     ]
-    subpage_types = ["home.BasePage", "contact.ContactPage"]
+    subpage_types = ["home.BasePage", "contact.ContactPage", "home.LearnContentPage"]
 
 
 class StyleGuidePage(Page):
@@ -74,8 +74,9 @@ class LearnContentPage(Page):
 
     body = StreamField(
             [
-                ('content', LearnRichBlock()),
                 ('categories', CategoryRichBlock(dafault='', null=True, blank=True)),
+                ('content', LearnRichBlock(null=True, blank=True)),
+                ('code', CodeRichBlock(null=True, blank=True)),
             ]
         )
 

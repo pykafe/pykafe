@@ -37,10 +37,19 @@ class PykafeMap(blocks.StructBlock):
     class Meta:
         template = 'home/blocks/pykafe_map.html'
 
+
+#Kria Rich block ba category
+class CategoryRichBlock(blocks.StructBlock):
+    category_type = blocks.CharBlock(required=False, help_text="Add your title")
+    categories = SnippetChooserBlock('home.LearnCategory', required=False)
+
+    class Meta:
+        template = 'home/blocks/learn_rich_block.html'
+
+
 # Kria Rich block ba content 
 class LearnRichBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(required=False, help_text='WYSIWYG text')
-    code = CodeBlock(label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)
     align = blocks.ChoiceBlock(choices=(
                ('left', 'Left'), ('right', 'Right'),
                ('center', 'Center'), ('justify', 'Justify')),
@@ -51,10 +60,14 @@ class LearnRichBlock(blocks.StructBlock):
         template = 'home/blocks/learn_rich_block.html'
 
 
-#Kria Rich block ba category
-class CategoryRichBlock(blocks.StructBlock):
-    category_type = blocks.CharBlock(required=False, help_text="Add your title")
-    categories = SnippetChooserBlock('home.LearnCategory')
+# Kria Rich block ba coding 
+class CodeRichBlock(blocks.StructBlock):
+    code = CodeBlock(label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)
+    align = blocks.ChoiceBlock(choices=(
+               ('left', 'Left'), ('right', 'Right'),
+               ('center', 'Center'), ('justify', 'Justify')),
+               required=True, default=('left', 'Left')
+     )
 
     class Meta:
         template = 'home/blocks/learn_rich_block.html'
