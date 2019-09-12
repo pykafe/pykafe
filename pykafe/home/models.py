@@ -63,7 +63,7 @@ class BasePage(Page):
         FieldPanel('description')
     ]
 
-#kria Pajina kontent nian
+# kria Pajina kontent nian
 class LearnContentPage(Page):
     image = models.ForeignKey(
         'wagtailimages.Image',
@@ -86,7 +86,7 @@ class LearnContentPage(Page):
     ]
 
 
-#registu ka import funsaun decorator no kria category
+# registu ka import funsaun decorator no kria category
 @register_snippet
 class LearnCategory(models.Model):
     name = models.CharField(max_length=255)
@@ -104,7 +104,7 @@ class LearnCategory(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
-#Kria model koneksaun entre Class LearnContentPage no LearnCategory
+# Kria model koneksaun entre Class LearnContentPage no LearnCategory
 class LearnPageLearnCategory(models.Model):
     page = ParentalKey('home.LearnContentPage', on_delete=models.CASCADE, related_name='categories2')
     learn_category = models.ForeignKey(

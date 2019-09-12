@@ -38,7 +38,7 @@ class PykafeMap(blocks.StructBlock):
         template = 'home/blocks/pykafe_map.html'
 
 
-#Kria Rich block ba category
+# Kria Rich block ba category
 class CategoryRichBlock(blocks.StructBlock):
     category_type = blocks.CharBlock(required=False, help_text="Add your title")
     categories = SnippetChooserBlock('home.LearnCategory', required=False)
