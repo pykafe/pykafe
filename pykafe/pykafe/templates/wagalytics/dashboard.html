@@ -4,16 +4,141 @@
 {% block extra_css %}
     {% include "wagtailadmin/pages/_editor_css.html" %}
     {{ block.super }}
+
+    <style>
+      .wagalytics .chart {
+          height: 150px;
+          margin-bottom: 50px;
+      }
+      .wagalytics .icon-spinner {
+          margin-left: 50%;
+      }
+    </style>
+
 {% endblock %}
 
 {% block titletag %}{% trans 'Analytics' %}{% endblock %}
 
 {% block content %}
 
-    <p>Hello World</p>
+    <header class="col12">
+        <div class="row nice-padding">
+            <div class="left">
+                <div class="col header-title">
+                    <h1 class="icon icon-fa-bar-chart">
+                        {% trans "Analytics" %}
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="wagalytics nice-padding">
+        <div class="col12 clearfix">
+            <h2>Sessions | Total Visitors: {{ count_visitor }}</h2>
+            <canvas id="visitoruser" class="chart"><i class="icon icon-spiner"></i></canvas>
+        </div>
+        <div class="col12 clearfix">
+            <h2>Popular content | Total views: {{ count_pageview }}</h2>
+            <canvas id="pageview"><i class="icon icon-spinner"></i></canvas`>
+        </div>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('visitoruser');
+        var keys = []
+        var visitors = []
+        {% for key, visitor in visitor.items %}
+            keys.push("{{key}}")
+            visitors.push({{visitor|length}})
+        {%endfor%}
+        var visitoruser = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: keys,
+                datasets: [{
+                    label: 'Visitor sessions',
+                    data: visitors,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        var pages_key = []
+        var pages = []
+        {% for key, page in pageview.items %}
+            pages_key.push("{{ key }}")
+            pages.push({{ page }})
+        {%endfor%}
+        var ctx = document.getElementById('pageview');
+        var pageview = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: pages_key,
+                datasets: [{
+                    label: 'Page view',
+                    data: pages,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
 
 {% endblock %}
 
 {% block extra_js %}
     {{ block.super }}
+    <script src="{% static '/chart.js/dist/Chart.min.js' %}"></script>
+    <script src="{% static '/chart.js/dist/Chart.bundle.min.js' %}"></script>
 {% endblock %}

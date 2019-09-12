@@ -4,7 +4,7 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdminGroup,
     modeladmin_register
 )
-from tracking.models import Visitor, Pageview
+from tracking.models import Visitor
 from django.utils.translation import ugettext_lazy as _
 
 try:
@@ -52,35 +52,13 @@ class VisitorAdmin(ModelAdmin):
     search_fields = ('user',)
 
 
-class PageviewAdmin(ModelAdmin):
-    model = Pageview
-    menu_label = "PageView"
-    menu_icon = "pilcrow"
-    menu_order = 200
-    add_to_settings_menu = False
-    exclude_from_explorer = False
-    list_display = ('url', 'view_time')
-    list_filter = ('url', 'view_time')
-    search_fields = ('url',)
-
-
 @hooks.register('register_admin_menu_item')
 def register_styleguide_menu_item():
     return MenuItem(
         _('Analytics'),
-        reverse('tracking'),
+        reverse('analytic'),
         classnames='icon icon-fa-bar-chart',
         order=1000
     )
 
-
-#class VisitorGroup(ModelAdminGroup):
-    #menu_label = "Visitors"
-    #menu_icon = "pick"
-    #menu_order = 500
-    #items = (VisitorAdmin, PageviewAdmin)
-
-
 modeladmin_register(VisitorAdmin)
-modeladmin_register(PageviewAdmin)
-#modeladmin_register(VisitorGroup)

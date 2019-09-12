@@ -1,11 +1,10 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
-import datetime
 
 from wagtail.core.models import Page
 from wagtail.search.models import Query
 from django.shortcuts import redirect, render
-from django.utils import timezone
+from tracking.models import Visitor, Pageview
 
 
 def search(request):
@@ -38,9 +37,19 @@ def search(request):
 
 
 def dashboard(request):
-    initial_start_date = (timezone.now() - datetime.timedelta(days=30)).strftime("%Y-%m-%d")
-
+    dict_view = {}
+    visitor_view = {}
+    for page in Pageview.objects.all():
+        for filterpage in Pageview.objects.filter(url=page.url).distinct():
+                dict_view.update({ filterpage.url: Pageview.objects.filter(url=page.url).count()})
+    for visitor in Visitor.objects.all():
+        try:
+            visitor_view[(visitor.start_time).strftime("%Y-%m-%d")] += [visitor.session_key]
+        except:
+            visitor_view.update({(visitor.start_time).strftime("%Y-%m-%d"): [visitor.session_key]})
     return render(request, 'wagalytics/dashboard.html', {
-        'ga_view_id': "Hello World",
-        'initial_start_date': initial_start_date,
+        'pageview': dict_view,
+        'visitor': visitor_view,
+        'count_pageview': Pageview.objects.count(),
+        'count_visitor': Visitor.objects.count(),
     })
