@@ -34,17 +34,43 @@
     </header>
 
     <div class="wagalytics nice-padding">
-        <div class="col12 clearfix">
-            <h2>Sessions | Total Visitors: {{ count_visitor }}</h2>
+        <div class="col6 clearfix">
+            <h2>Sessions</h2>
             <canvas id="visitoruser" class="chart"><i class="icon icon-spiner"></i></canvas>
         </div>
+        <div class="col6 clearfix">
+            <h2>Total Visitor and Total Page View</h2>
+            <canvas id="totalvisitor"><i class="icon icon-spinner"></i></canvas`>
+        </div>
         <div class="col12 clearfix">
-            <h2>Popular content | Total views: {{ count_pageview }}</h2>
+            <h2>Popular content</h2>
             <canvas id="pageview"><i class="icon icon-spinner"></i></canvas`>
+        </div>
+        <div class="col12 clearfix">
+            <h2>Country name</h2>
+            <canvas id="countryname"><i class="icon icon-spinner"></i></canvas`>
         </div>
     </div>
 
     <script>
+        var backgroundcolor = [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ]
+        var bordercolor = [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ]
+        var options = {scales: {yAxes: [{ticks: {beginAtZero: true}}]}}
+
         var ctx = document.getElementById('visitoruser');
         var keys = []
         var visitors = []
@@ -59,34 +85,12 @@
                 datasets: [{
                     label: 'Visitor sessions',
                     data: visitors,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
                     borderWidth: 1
                 }]
             },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
+            options: options
         });
 
         var pages_key = []
@@ -103,34 +107,50 @@
                 datasets: [{
                     label: 'Page view',
                     data: pages,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
                     borderWidth: 1
                 }]
             },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
+            options: options
+        });
+
+        var ctx = document.getElementById('totalvisitor');
+        var totalvisitor = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Total Visitor', 'Total Page view',],
+                datasets: [{
+                    label: 'Total',
+                    data: [{{ count_visitor }}, {{ count_pageview  }}],
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
+                    borderWidth: 1
+                }]
+            },
+            options: options
+        });
+
+        var country_keys = []
+        var countries = []
+        {% for country_key, country in country_name.items %}
+            country_keys.push("{{ country_key }}")
+            countries.push({{ country|length }})
+        {%endfor%}
+        var ctx = document.getElementById('countryname');
+        var countryname = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: country_keys,
+                datasets: [{
+                    label: 'Country name',
+                    data: countries,
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
+                    borderWidth: 1
+                }]
+            },
+            options: options
         });
     </script>
 
