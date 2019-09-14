@@ -35,19 +35,22 @@
 
     <div class="wagalytics nice-padding">
         <div class="col6 clearfix">
-            <h2>Sessions</h2>
+            <h2>{% trans 'Sessions' %}</h2>
+            <p>{% trans 'When do your users visit?' %}</p>
             <canvas id="visitoruser" class="chart"><i class="icon icon-spiner"></i></canvas>
         </div>
         <div class="col6 clearfix">
-            <h2>Total Visitor and Total Page View</h2>
+            <h2>{% trans 'Total Visitor and Total Page View' %}</h2>
             <canvas id="totalvisitor"><i class="icon icon-spinner"></i></canvas`>
         </div>
         <div class="col12 clearfix">
-            <h2>Popular content</h2>
+            <h2>{% trans 'Popular content' %}</h2>
+            <p>{% trans 'What pages do your users visit?' %}</p>
             <canvas id="pageview"><i class="icon icon-spinner"></i></canvas`>
         </div>
         <div class="col12 clearfix">
-            <h2>Country name</h2>
+            <h2>{% trans 'Sessions by country' %}</h2>
+            <p>{% trans 'Where are your users?' %}</p>
             <canvas id="countryname"><i class="icon icon-spinner"></i></canvas`>
         </div>
     </div>
