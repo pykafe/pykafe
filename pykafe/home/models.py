@@ -3,7 +3,7 @@ from django.db import models
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
@@ -106,9 +106,9 @@ class LearnCategory(models.Model):
 
 # Kria model koneksaun entre Class LearnContentPage no LearnCategory
 class LearnPageLearnCategory(models.Model):
-    page = ParentalKey('home.LearnContentPage', on_delete=models.CASCADE, related_name='categories2')
+    page = ParentalKey('home.LearnContentPage', on_delete=models.CASCADE)
     learn_category = models.ForeignKey(
-        'home.LearnCategory', on_delete=models.CASCADE, related_name='learn_pages')
+        'home.LearnCategory', on_delete=models.CASCADE)
 
     panels = [
         SnippetChooserPanel('learn_category'),

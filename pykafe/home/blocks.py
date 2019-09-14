@@ -40,7 +40,7 @@ class PykafeMap(blocks.StructBlock):
 
 # Kria Rich block ba category
 class CategoryRichBlock(blocks.StructBlock):
-    category_type = blocks.CharBlock(required=False, help_text="Add your title")
+    category_type = blocks.CharBlock(required=False, help_text="Add your category type")
     categories = SnippetChooserBlock('home.LearnCategory', required=False)
 
     class Meta:
@@ -49,7 +49,7 @@ class CategoryRichBlock(blocks.StructBlock):
 
 # Kria Rich block ba content 
 class LearnRichBlock(blocks.StructBlock):
-    text = blocks.RichTextBlock(required=False, help_text='WYSIWYG text')
+    text = blocks.RichTextBlock(required=False, help_text='Add your content in here')
     align = blocks.ChoiceBlock(choices=(
                ('left', 'Left'), ('right', 'Right'),
                ('center', 'Center'), ('justify', 'Justify')),
