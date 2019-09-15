@@ -48,10 +48,15 @@
             <p>{% trans 'What pages do your users visit?' %}</p>
             <canvas id="pageview"><i class="icon icon-spinner"></i></canvas`>
         </div>
-        <div class="col12 clearfix">
+        <div class="col6 clearfix">
             <h2>{% trans 'Sessions by country' %}</h2>
             <p>{% trans 'Where are your users?' %}</p>
             <canvas id="countryname"><i class="icon icon-spinner"></i></canvas`>
+        </div>
+        <div class="col6 clearfix">
+            <h2>{% trans 'Count users' %}</h2>
+            <p>{% trans 'How many users are visiting this website?' %}</p>
+            <canvas id="countusers"><i class="icon icon-spinner"></i></canvas`>
         </div>
     </div>
 
@@ -148,6 +153,27 @@
                 datasets: [{
                     label: 'Country name',
                     data: countries,
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
+                    borderWidth: 1
+                }]
+            },
+            options: options
+        });
+        var user_keys = []
+        var count_users = []
+        {% for user_key, count_user in count_users.items %}
+            user_keys.push("{{ user_key }}")
+            count_users.push({{ count_user|length }})
+        {%endfor%}
+        var ctx = document.getElementById('countusers');
+        var countryname = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: user_keys,
+                datasets: [{
+                    label: 'Count Users',
+                    data: count_users,
                     backgroundColor: backgroundcolor,
                     borderColor: bordercolor,
                     borderWidth: 1

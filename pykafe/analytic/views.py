@@ -7,6 +7,7 @@ def dashboard(request):
     dict_view = {}
     visitor_view = {}
     country_name = {}
+    count_users = {}
     g = GeoIP2()
     for page in Pageview.objects.all():
         for filterpage in Pageview.objects.filter(url=page.url).distinct():
@@ -14,15 +15,19 @@ def dashboard(request):
     for visitor in Visitor.objects.all():
         try:
             visitor_view[(visitor.start_time).strftime("%Y-%m-%d")] += [visitor.session_key]
-        except:
+        except KeyError:
             visitor_view.update({(visitor.start_time).strftime("%Y-%m-%d"): [visitor.session_key]})
         if visitor.ip_address != request.META['REMOTE_ADDR']:
             try:
                 country_name[g.city(visitor.ip_address)['country_name']] += [g.city(visitor.ip_address)['country_name']]
-            except:
+            except KeyError:
                 country_name.update({g.city(visitor.ip_address)['country_name']: [g.city(visitor.ip_address)['country_name']]})
         else:
             pass
+        try:
+            count_users[visitor.user] += [visitor.user]
+        except KeyError:
+             count_users.update({visitor.user: [visitor.user]})
 
     return render(request, 'wagalytics/dashboard.html', {
         'pageview': dict_view,
@@ -30,4 +35,5 @@ def dashboard(request):
         'count_pageview': Pageview.objects.count(),
         'count_visitor': Visitor.objects.count(),
         'country_name': country_name,
+        'count_users': count_users,
     })
