@@ -386,3 +386,9 @@ ul.navbar-nav {
         margin: 9px;
     }
 }
+
+.konversa {
+    border: none;
+    height:calc(100% - 80px);
+    width: 100%;
+}

@@ -1,5 +1,5 @@
 {% load pykafe %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags i18n %}
 
 <nav class="navbar navbar-expand-lg header">
 
@@ -15,25 +15,29 @@
              <span class="navbar-toggler-icon"></span>
          </button>
 
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-             <ul class="navbar-nav">
-                 {% for page in home.get_children %}
-                 {% if page.live %}
-                 <li class="nav-item {% if self.url_path|startswith:page.url_path %} active {% endif %}">
-                     <a class="navbar-brand" href="{% pageurl page %}">
-                         {{ page.title }}
-                     </a>
-                 </li>
-                 {% endif %}
-                 {% endfor %}
-             </ul>
-             <!--
-             <form class="form-inline my-2 my-lg-0">
-                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-             </form>
-              -->
-         </div>
-     </div>
-
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          {% for page in home.get_children %}
+              {% if page.live %}
+                  <li class="nav-item {% if self.url_path|startswith:page.url_path %} active {% endif %}">
+                  <a class="navbar-brand" href="{% pageurl page %}">
+                      {{ page.title }}
+                  </a>
+                  </li>
+              {% endif %}
+          {% endfor %}
+          <li>
+            <a class="navbar-brand" href="{% url 'konversa' %}">
+                {% trans "Konversa" %}
+            </a>
+          <li>
+          </ul>
+          <!-- 
+          <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          -->
+          </div>
+    </div>
 </nav>
