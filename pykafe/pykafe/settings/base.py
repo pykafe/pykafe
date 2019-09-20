@@ -167,8 +167,6 @@ WAGTAIL_SITE_NAME = "pykafe"
 BASE_URL = 'http://example.com'
 
 GOOGLE_MAPS_API_KEY = "AIzaSyC7arOtQOhxhc9ozCnJ5YcuAMI_fJ5UqqA"
-<<<<<<< Updated upstream
-=======
 
 mattermost = dict(
     url = "https://pykafe.pykafe.dns-cloud.net",
@@ -184,4 +182,3 @@ WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('json', 'JSON'),
     ('python', 'Python'),
 )
->>>>>>> Stashed changes
