@@ -54,6 +54,7 @@ class BasePage(Page):
         ], blank=True)
 
     content_panels = Page.content_panels + [
+        FieldPanel('show_in_menus', classname="full"),
         StreamFieldPanel('body'),
         FieldPanel('image_title', classname="full"),
         ImageChooserPanel('image'),
