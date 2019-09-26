@@ -85,6 +85,8 @@ class LearnContentPage(Page):
         StreamFieldPanel('body'),
     ]
 
+    template = 'home/home_page.html'
+
 
 # registu ka import funsaun decorator no kria category
 @register_snippet
