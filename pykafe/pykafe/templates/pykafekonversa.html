@@ -16,7 +16,10 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/pykafe.css' %}">
     </head>
     <body>
-        <iframe src="{{ konversa|safe }}" class="konversa"></iframe>
+        <iframe id="konversa" class="konversa"></iframe>
         {% include 'includes/footer.html' %}
+        <script>
+            document.getElementById("konversa").src = "{{ konversa|safe }}";
+        </script>
     </body>
 </html>
