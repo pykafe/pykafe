@@ -4,11 +4,17 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtailcodeblock.blocks import CodeBlock
 
 
+CHOICES_ALIGN = (
+        ('left', 'Left'), 
+        ('right', 'Right'), 
+        ('center', 'Center'), 
+        ('justify', 'Justify')
+)
+
+
 class PykafeRichBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(help_text='WYSIWYG text')
-    align = blocks.ChoiceBlock(choices=(
-               ('left', 'Left'), ('right', 'Right'),
-               ('center', 'Center'), ('justify', 'Justify')),
+    align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
                required=True, default=('left', 'Left')
      )
 
@@ -50,12 +56,10 @@ class CategoryRichBlock(blocks.StructBlock):
 # Kria Rich block ba content 
 class LearnRichBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(required=False, help_text='Add your content in here')
-    align = blocks.ChoiceBlock(choices=(
-               ('left', 'Left'), ('right', 'Right'),
-               ('center', 'Center'), ('justify', 'Justify')),
+    align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
                required=True, default=('left', 'Left')
      )
-
+     
     class Meta:
         template = 'home/blocks/learn_rich_block.html'
 
@@ -63,9 +67,7 @@ class LearnRichBlock(blocks.StructBlock):
 # Kria Rich block ba coding 
 class CodeRichBlock(blocks.StructBlock):
     code = CodeBlock(label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)
-    align = blocks.ChoiceBlock(choices=(
-               ('left', 'Left'), ('right', 'Right'),
-               ('center', 'Center'), ('justify', 'Justify')),
+    align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
                required=True, default=('left', 'Left')
      )
 
