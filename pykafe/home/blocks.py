@@ -13,7 +13,7 @@ CHOICES_ALIGN = (
 
 
 class PykafeRichBlock(blocks.StructBlock):
-    text = blocks.RichTextBlock(help_text='WYSIWYG text')
+    text = blocks.RichTextBlock(help_text='Add your text in here')
     align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
                required=True, default=('left', 'Left')
      )
