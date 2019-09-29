@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/pykafe.css' %}">
     </head>
     <body>
-        <iframe class="konversa" id="chat" style="height: 660px"></iframe>
+        <iframe class="konversa" id="chat" style="height: 580px"></iframe>
         {% include 'includes/footer.html' %}
         <script>
             document.getElementById("chat").src = "{{ konversa|safe }}";
