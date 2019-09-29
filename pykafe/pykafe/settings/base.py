@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtailcodeblock',
 
     'modelcluster',
     'taggit',
@@ -171,8 +172,6 @@ GOOGLE_MAPS_API_KEY = "AIzaSyC7arOtQOhxhc9ozCnJ5YcuAMI_fJ5UqqA"
 mattermost = dict(
     url = "https://pykafe.pykafe.dns-cloud.net",
 )
-
-
 
 # Language of code block
 WAGTAIL_CODE_BLOCK_LANGUAGES = (
