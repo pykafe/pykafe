@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from tracking.models import Visitor, Pageview
 from django.contrib.gis.geoip2 import GeoIP2
+from geoip2.errors import AddressNotFoundError
 
 
 def dashboard(request):
@@ -17,13 +18,13 @@ def dashboard(request):
             visitor_view[(visitor.start_time).strftime("%Y-%m-%d")] += [visitor.session_key]
         except KeyError:
             visitor_view.update({(visitor.start_time).strftime("%Y-%m-%d"): [visitor.session_key]})
-        if visitor.ip_address != request.META['REMOTE_ADDR']:
+        try:
+            country_name[g.city(visitor.ip_address)['country_name']] += [g.city(visitor.ip_address)['country_name']]
+        except (KeyError, AddressNotFoundError) as e:
             try:
-                country_name[g.city(visitor.ip_address)['country_name']] += [g.city(visitor.ip_address)['country_name']]
-            except KeyError:
                 country_name.update({g.city(visitor.ip_address)['country_name']: [g.city(visitor.ip_address)['country_name']]})
-        else:
-            pass
+            except (KeyError, AddressNotFoundError) as e:
+                pass
         try:
             count_users[visitor.user] += [visitor.user]
         except KeyError:
