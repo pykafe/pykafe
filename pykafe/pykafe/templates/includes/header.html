@@ -26,11 +26,13 @@
                   </li>
               {% endif %}
           {% endfor %}
+          {% if request.user.is_active %}
           <li>
             <a class="navbar-brand" href="{% url 'konversa' %}">
                 {% trans "Konversa" %}
             </a>
           <li>
+          {% endif %}
           </ul>
           <!-- 
           <form class="form-inline my-2 my-lg-0">
