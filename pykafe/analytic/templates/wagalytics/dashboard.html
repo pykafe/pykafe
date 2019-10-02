@@ -65,6 +65,11 @@
         <div class="col12 clearfix">
             <h2>{% trans 'Where are your users?' %}</h2>
             {% leaflet_map "yourmap" callback="window.map_monitoring" %}
+        {% for geo_key, geolocation_user in geolocation.items %}
+            {% for geo in geolocation_user %}
+                    {{geo}}
+            {% endfor %}
+        {%endfor%}
         </div>
     </div>
 
@@ -190,12 +195,14 @@
             options: options
         });
 
-        {% for geo_key, geolocation_user in geolocation.items %}
             function map_monitoring (map, options) {
-                var marker = new L.marker({{ geolocation_user|slice:"1:3" }}).bindPopup("{{ geolocation_user|slice:':1' }}").openPopup();
-                marker.addTo(map);
+                {% if geolocation %}
+                    {% for geo_key, geolocation_user in geolocation.items %}
+                        var marker = new L.marker({{ geolocation_user|slice:"1:3" }}).bindPopup("{{ geolocation_user|slice:':1' }}").openPopup();
+                        marker.addTo(map);
+                    {%endfor%}
+                {%endif%}
             }
-        {%endfor%}
 
     </script>
 
