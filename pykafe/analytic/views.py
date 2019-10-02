@@ -9,6 +9,7 @@ def dashboard(request):
     visitor_view = {}
     country_name = {}
     count_users = {}
+    geolocation = {}
     g = GeoIP2()
     for page in Pageview.objects.all():
         for filterpage in Pageview.objects.filter(url=page.url).distinct():
@@ -29,6 +30,13 @@ def dashboard(request):
             count_users[visitor.user] += [visitor.user]
         except KeyError:
              count_users.update({visitor.user: [visitor.user]})
+        try:
+            geolocation[g.city(visitor.ip_address)['country_name']] += [g.city(visitor.ip_address)['country_name'], g.city(visitor.ip_address)['latitude'], g.city(visitor.ip_address)['longitude'] ]
+        except (KeyError, AddressNotFoundError) as e:
+            try:
+                geolocation.update({g.city(visitor.ip_address)['country_name']: [g.city(visitor.ip_address)['country_name'], g.city(visitor.ip_address)['latitude'], g.city(visitor.ip_address)['longitude']]})
+            except (KeyError, AddressNotFoundError) as e:
+                pass
 
     return render(request, 'wagalytics/dashboard.html', {
         'pageview': dict_view,
@@ -37,4 +45,5 @@ def dashboard(request):
         'count_visitor': Visitor.objects.count(),
         'country_name': country_name,
         'count_users': count_users,
+        'geolocation': geolocation,
     })

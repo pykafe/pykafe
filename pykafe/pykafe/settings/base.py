@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'contact',
     'tracking',
     'analytic',
+    'leaflet',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -192,3 +193,8 @@ WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('python', 'Python'),
 )
 
+
+LEAFLET_CONFIG = {
+    'SPATIAL_EXTENT': (124.7168, -9.7063, 127.3233, -8.1245),
+    'SCALE': 'both',
+}
