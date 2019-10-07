@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import django.conf.locale
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'contact',
+    'rosetta',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -132,6 +134,28 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+LANGUAGES = [
+    ('tet', 'Tetum'),
+    ('en', 'English'),
+    ('pt', 'Portugues')
+]
+
+EXTRA_LANG_INFO = dict(
+    tet = {
+        'bidi': False,
+        'code': 'tet',
+        'name': 'Tetum',
+        'name_local': 'Tetum',
+    },
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+django.conf.locale.LANG_INFO.update(EXTRA_LANG_INFO)
 
 
 # Static files (CSS, JavaScript, Images)
