@@ -1,4 +1,7 @@
-from wagtail.core import hooks
+try:
+    from wagtail.core import hooks
+except ImportError:  # fallback for Wagtail <2.0
+    from wagtail.wagtailcore import hooks
 
 
 @hooks.register('register_rich_text_features')

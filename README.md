@@ -13,6 +13,12 @@ loke terminal no ketik etapa sira tuir mai nee:
 Atu setup yarn mak hanesan tuir mai ne'e:
 ```curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - sudo apt-get install -y nodejs curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list sudo apt-get update && sudo apt-get install yarn```
 
+Se iha server ita presisa download GeoLite2-Country:
+    - cd ~/Devel/pykafe/pykafe/pykafe
+    - wget https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz
+    - tar -xvzf GeoLite2-Country*.gz
+    - mv GeoLite2-Country GeoLite2_City
+
 No tuir mai:
 1. git clone git@github.com:pykafe/pykafe.git
 2. pip install -r requirements.txt

@@ -1,8 +1,7 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.shortcuts import render
-
 from wagtail.core.models import Page
 from wagtail.search.models import Query
+from django.shortcuts import redirect, render
 
 
 def search(request):
@@ -32,3 +31,4 @@ def search(request):
         'search_query': search_query,
         'search_results': search_results,
     })
+
