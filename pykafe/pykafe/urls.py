@@ -9,7 +9,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 from search import views as search_views
 from .views import KonversaView
 
+
 urlpatterns = [
+    url('i18n/', include('django.conf.urls.i18n')),
     url(r'konversa/', KonversaView.as_view(), name='konversa'),
     url(r'^django-admin/', admin.site.urls),
 
