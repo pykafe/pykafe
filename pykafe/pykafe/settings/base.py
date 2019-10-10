@@ -57,7 +57,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.locale.LocaleMiddleware', # you need this to activate language (code)
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
