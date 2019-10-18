@@ -29,7 +29,10 @@ INSTALLED_APPS = [
     'search',
     'contact',
     'rosetta',
-
+    'tracking',
+    'analytic',
+    'leaflet',
+  
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtail.contrib.modeladmin',
     'wagtailcodeblock',
 
     'modelcluster',
@@ -56,6 +60,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = (
+    'tracking.middleware.VisitorTrackingMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware', # you need this to activate language (code)
     'django.middleware.common.CommonMiddleware',
@@ -183,6 +188,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+GEOIP_PATH =  os.path.join(BASE_DIR, 'GeoLite2_City')
+
 
 # Wagtail settings
 
@@ -193,6 +200,14 @@ WAGTAIL_SITE_NAME = "pykafe"
 BASE_URL = 'http://example.com'
 
 GOOGLE_MAPS_API_KEY = "AIzaSyC7arOtQOhxhc9ozCnJ5YcuAMI_fJ5UqqA"
+
+# tracking users
+TRACK_AJAX_REQUESTS = True
+TRACK_SUPERUSERS = False
+TRACK_PAGEVIEWS = True
+TRACK_IGNORE_STATUS_CODES = [400, 404, 403, 405, 410, 500]
+TRACK_REFERER = True
+TRACK_QUERY_STRING = True
 
 mattermost = dict(
     url = "https://pykafe.pykafe.dns-cloud.net",
@@ -206,3 +221,9 @@ WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('json', 'JSON'),
     ('python', 'Python'),
 )
+
+
+LEAFLET_CONFIG = {
+    'SPATIAL_EXTENT': (124.7168, -9.7063, 127.3233, -8.1245),
+    'SCALE': 'both',
+}

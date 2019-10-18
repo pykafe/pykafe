@@ -1,0 +1,219 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags i18n staticfiles %}
+{% load leaflet_tags %}
+
+{% block extra_css %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+
+    {% include "wagtailadmin/pages/_editor_css.html" %}
+    {{ block.super }}
+
+    <style>
+      .wagalytics .chart {
+          height: 150px;
+          margin-bottom: 50px;
+      }
+      .wagalytics .icon-spinner {
+          margin-left: 50%;
+      }
+    </style>
+
+{% endblock %}
+
+{% block titletag %}{% trans 'Analytics' %}{% endblock %}
+
+{% block content %}
+
+    <header class="col12">
+        <div class="row nice-padding">
+            <div class="left">
+                <div class="col header-title">
+                    <h1 class="icon icon-fa-bar-chart">
+                        {% trans "Analytics" %}
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="wagalytics nice-padding">
+        <div class="col6 clearfix">
+            <h2>{% trans 'Sessions' %}</h2>
+            <p>{% trans 'When do your users visit?' %}</p>
+            <canvas id="visitoruser" class="chart"><i class="icon icon-spiner"></i></canvas>
+        </div>
+        <div class="col6 clearfix">
+            <h2>{% trans 'Total Visitor and Total Page View' %}</h2>
+            <canvas id="totalvisitor"><i class="icon icon-spinner"></i></canvas`>
+        </div>
+        <div class="col12 clearfix">
+            <h2>{% trans 'Popular content' %}</h2>
+            <p>{% trans 'What pages do your users visit?' %}</p>
+            <canvas id="pageview"><i class="icon icon-spinner"></i></canvas`>
+        </div>
+        <div class="col6 clearfix">
+            <h2>{% trans 'Sessions by country' %}</h2>
+            <p>{% trans 'Where are your users?' %}</p>
+            <canvas id="countryname"><i class="icon icon-spinner"></i></canvas`>
+        </div>
+        <div class="col6 clearfix">
+            <h2>{% trans 'Count users' %}</h2>
+            <p>{% trans 'How many users are visiting this website?' %}</p>
+            <canvas id="countusers"><i class="icon icon-spinner"></i></canvas`>
+        </div>
+        <div class="col12 clearfix">
+            <h2>{% trans 'Where are your users?' %}</h2>
+            {% leaflet_map "yourmap" callback="window.map_monitoring" %}
+        </div>
+    </div>
+
+    <script>
+        var backgroundcolor = [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ]
+        var bordercolor = [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ]
+        var options = {scales: {yAxes: [{ticks: {beginAtZero: true}}]}}
+
+        var ctx = document.getElementById('visitoruser');
+        var keys = []
+        var visitors = []
+        {% for key, visitor in visitor.items %}
+            keys.push("{{key}}")
+            visitors.push({{visitor|length}})
+        {%endfor%}
+        var visitoruser = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: keys,
+                datasets: [{
+                    label: 'Visitor sessions',
+                    data: visitors,
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
+                    borderWidth: 1
+                }]
+            },
+            options: options
+        });
+
+        var pages_key = []
+        var pages = []
+        {% for key, page in pageview.items %}
+            pages_key.push("{{ key }}")
+            pages.push({{ page }})
+        {%endfor%}
+        var ctx = document.getElementById('pageview');
+        var pageview = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: pages_key,
+                datasets: [{
+                    label: 'Page view',
+                    data: pages,
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
+                    borderWidth: 1
+                }]
+            },
+            options: options
+        });
+
+        var ctx = document.getElementById('totalvisitor');
+        var totalvisitor = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Total Visitor', 'Total Page view',],
+                datasets: [{
+                    label: 'Total',
+                    data: [{{ count_visitor }}, {{ count_pageview  }}],
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
+                    borderWidth: 1
+                }]
+            },
+            options: options
+        });
+
+        var country_keys = []
+        var countries = []
+        {% for country_key, country in country_name.items %}
+            country_keys.push("{{ country_key }}")
+            countries.push({{ country|length }})
+        {%endfor%}
+        var ctx = document.getElementById('countryname');
+        var countryname = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: country_keys,
+                datasets: [{
+                    label: 'Country name',
+                    data: countries,
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
+                    borderWidth: 1
+                }]
+            },
+            options: options
+        });
+        var user_keys = []
+        var count_users = []
+        {% for user_key, count_user in count_users.items %}
+            user_keys.push("{{ user_key }}")
+            count_users.push({{ count_user|length }})
+        {%endfor%}
+        var ctx = document.getElementById('countusers');
+        var countryname = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: user_keys,
+                datasets: [{
+                    label: 'Count Users',
+                    data: count_users,
+                    backgroundColor: backgroundcolor,
+                    borderColor: bordercolor,
+                    borderWidth: 1
+                }]
+            },
+            options: options
+        });
+
+            function map_monitoring (map, options) {
+                const markerIcon = L.icon({
+                    iconSize: [25, 41],
+                    iconAnchor: [10, 41],
+                    popupAnchor: [2, -40],
+                    iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
+                    shadowUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-shadow.png"
+                });
+
+                {% if geolocation %}
+                    {% for geo_key, geolocation_user in geolocation.items %}
+                        var marker = new L.marker({{ geolocation_user|slice:"1:3" }}, { icon: markerIcon }).bindPopup("{{ geolocation_user|slice:':1' }}").openPopup();
+                        marker.addTo(map);
+                    {%endfor%}
+                {%endif%}
+            }
+
+    </script>
+
+
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <script src="{% static 'chart.js/dist/Chart.min.js' %}"></script>
+    <script src="{% static 'chart.js/dist/Chart.bundle.min.js' %}"></script>
+{% endblock %}
