@@ -16,8 +16,8 @@ Atu setup yarn mak hanesan tuir mai ne'e:
 Se iha server ita presisa download GeoLite2-Country:
 - cd ~/Devel/pykafe/pykafe/pykafe
 - wget https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz
-- tar -xvzf GeoLite2-Country*.gz
-- mv GeoLite2-Country GeoLite2_City
+- tar -xvzf GeoLite2-City*.gz
+- mv GeoLite2-City GeoLite2_City
 
 No tuir mai:
 1. git clone git@github.com:pykafe/pykafe.git
