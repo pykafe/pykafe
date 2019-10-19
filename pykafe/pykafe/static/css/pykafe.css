@@ -392,3 +392,7 @@ ul.navbar-nav {
     height:calc(100% - 80px);
     width: 100%;
 }
+
+.change_language {
+    margin-top: 10px;
+}

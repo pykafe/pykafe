@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-08 15:16+0900\n"
+"PO-Revision-Date: 2019-10-08 15:14+0822\n"
+"Last-Translator: b'  <>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.9.3\n"
+
+#: contact/templates/contact/contact_page.html:47
+msgid "Submit"
+msgstr "Hatama"
+
+#: contact/templates/contact/contact_page.html:53
+msgid "Our Place"
+msgstr "Ami nia fatin"
+
+#: contact/templates/contact/contact_page.html:54
+msgid "Street Address"
+msgstr "Rua avenida"
+
+#: contact/templates/contact/contact_page.html:56
+msgid "Rua Nicolau dos Reis Lobato, Colmera-Díli"
+msgstr "Rua Nicolau dos Reis Lobato, Colmera-Díli"
+
+#: contact/templates/contact/contact_us_email.html:31
+msgid "Name"
+msgstr "Naran"
+
+#: contact/templates/contact/contact_us_email.html:32
+msgid "Email"
+msgstr "Email"
+
+#: contact/templates/contact/contact_us_email.html:33
+msgid "Subject"
+msgstr "Asuntu"
+
+#: contact/templates/contact/contact_us_email.html:34
+msgid "Messages"
+msgstr "Mensajen"
+
+#: contact/templates/contact/contact_us_email.html:35
+msgid "Submitted"
+msgstr "Hatama ona"
+
+#: contact/templates/contact/contact_us_email.html:36
+msgid "Submitted Via"
+msgstr "Hatama hosi"
+
+#: home/templates/home/blocks/pykafe_rich_block.html:22
+msgid "More Detail"
+msgstr "Maid detalhu"
+
+#: pykafe/templates/pykafekonversa.html:6
+msgid "Chat"
+msgstr "Konversa"
