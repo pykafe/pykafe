@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'tracking',
     'analytic',
     'leaflet',
-  
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -211,6 +211,10 @@ TRACK_QUERY_STRING = True
 
 mattermost = dict(
     url = "https://pykafe.pykafe.dns-cloud.net",
+)
+
+consolepython = dict(
+    url = "http://brython.info/console.html",
 )
 
 # Language of code block

@@ -8,7 +8,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 from django.conf.urls.i18n import i18n_patterns
 
 from search import views as search_views
-from .views import KonversaView
+from .views import KonversaView, ConsolePython
 
 
 urlpatterns = [
@@ -21,6 +21,7 @@ urlpatterns += i18n_patterns(
     # These URLs will have /<language_code>/ appended to the beginning
     url('i18n/', include('django.conf.urls.i18n')),
     url(r'konversa/', KonversaView.as_view(), name='konversa'),
+    url(r'console/', ConsolePython.as_view(), name='console'),
     url(r'^search/$', search_views.search, name='search'),
     url(r'', include(wagtail_urls)),
 )
