@@ -32,7 +32,7 @@ class HomePage(Page):
         ImageChooserPanel('image'),
         StreamFieldPanel('body'),
     ]
-    subpage_types = ["home.BasePage", "contact.ContactPage", "home.LearnContentPage"]
+    subpage_types = ["home.StyleGuidePage", "home.BasePage", "contact.ContactPage", "home.LearnContentPage"]
 
 
 class StyleGuidePage(Page):
