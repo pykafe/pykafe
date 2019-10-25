@@ -17,7 +17,7 @@ def dashboard(request):
             page_view[page.url] += pages.count()
         except KeyError as e:
             page_view.update({page.url: pages.count()})
-    for visitor in Visitor.objects.all():
+    for visitor in Visitor.objects.distinct():
         try:
             visitor_view[(visitor.start_time).strftime("%Y-%m-%d")] += [visitor.session_key]
             country_name[g.city(visitor.ip_address)['country_name']] += [g.city(visitor.ip_address)['country_name']]
