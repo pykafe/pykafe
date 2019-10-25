@@ -11,13 +11,15 @@ def dashboard(request):
     count_users = {}
     geolocation = {}
     g = GeoIP2()
-    for page in Pageview.objects.distinct():
-        pages =  Pageview.objects.filter(url=page.url)
+    pageviews = Pageview.objects.distinct()
+    visitors = Visitor.objects.distinct()
+    for page in pageviews:
+        pages =  pageviews.filter(url=page.url)
         try:
             page_view[page.url] += pages.count()
         except KeyError as e:
             page_view.update({page.url: pages.count()})
-    for visitor in Visitor.objects.distinct():
+    for visitor in visitors:
         try:
             visitor_view[(visitor.start_time).strftime("%Y-%m-%d")] += [visitor.session_key]
             country_name[g.city(visitor.ip_address)['country_name']] += [g.city(visitor.ip_address)['country_name']]
@@ -35,8 +37,8 @@ def dashboard(request):
     return render(request, 'wagalytics/dashboard.html', {
         'pageview': page_view,
         'visitor': visitor_view,
-        'count_pageview': Pageview.objects.count(),
-        'count_visitor': Visitor.objects.count(),
+        'count_pageview': pageviews.count(),
+        'count_visitor': visitors.count(),
         'country_name': country_name,
         'count_users': count_users,
         'geolocation': geolocation,
