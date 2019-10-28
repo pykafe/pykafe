@@ -32,7 +32,9 @@ class HomePage(Page):
         ImageChooserPanel('image'),
         StreamFieldPanel('body'),
     ]
-    subpage_types = ["home.BasePage", "contact.ContactPage", "home.LearnContentPage"]
+    subpage_types = ["home.BasePage",
+                     "contact.ContactPage",
+                     "home.LearnContentPage"]
 
 
 class StyleGuidePage(Page):
@@ -63,6 +65,7 @@ class BasePage(Page):
         ImageChooserPanel('image'),
         FieldPanel('description')
     ]
+
 
 # kria Pajina kontent nian
 class LearnContentPage(Page):
@@ -106,6 +109,7 @@ class LearnCategory(models.Model):
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
+
 
 # Kria model koneksaun entre Class LearnContentPage no LearnCategory
 class LearnPageLearnCategory(models.Model):
