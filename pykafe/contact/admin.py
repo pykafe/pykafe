@@ -1,3 +1,4 @@
 from django.contrib import admin
 
-# Register your models here.
+# Hatama naran ba iha Admin site.
+admin.site.site_header = "Pykafe administration"
