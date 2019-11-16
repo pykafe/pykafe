@@ -10,7 +10,7 @@ if (workbox) {
     );
 
     workbox.routing.registerRoute(
-        new RegExp('/accounts|admin)/.*'),
+        new RegExp('/(accounts|admin)/.*'),
         workbox.strategies.NetworkOnly()
     );
 
