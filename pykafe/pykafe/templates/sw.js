@@ -7,12 +7,7 @@ if (workbox) {
     workbox.routing.registerRoute(
         new RegExp('/media/.*'),
         workbox.strategies.staleWhileRevalidate()
-      );
-
-    workbox.routing.registerRoute(
-        new RegExp('/static/.*'),
-        workbox.strategies.CacheFirst()
-      );
+    );
 
     workbox.routing.registerRoute(
         new RegExp('/accounts|admin)/.*'),
@@ -24,22 +19,27 @@ if (workbox) {
         workbox.strategies.NetworkFirst()
     );
 
+    workbox.routing.registerRoute(
+        new RegExp('/static/.*'),
+        workbox.strategies.CacheFirst()
+    );
+}
 
-    // Activo handler hodi hamos caches tuan
-    self.addEventListener('activate', event => {
-        const currentCaches = ['pykafe-ezekusaun-tempu', 'pykafe-precificar-desenvolvimento'];
-        event.waitUntil(
-            caches.keys().then( cacheNames => {
-                return Promise.all(
-                    cacheNames.map( cacheName => {
-                        if (currentCaches.indexOf(cacheName) === -1) {
-                            return caches.delete(cacheName);
-                        }
-                    })
-                );
+
+// Activo handler hodi hamos caches tuan
+self.addEventListener('activate', event => {
+    const currentCaches = ['pykafe-ezekusaun-tempu', 'pykafe-precificar-desenvolvimento'];
+    event.waitUntil(
+    caches.keys().then( cacheNames => {
+        return Promise.all(
+            cacheNames.map( cacheName => {
+                if (currentCaches.indexOf(cacheName) === -1) {
+                    return caches.delete(cacheName);
+                }
             })
         );
-    });
+    })
+    );
+});
 
 
-}
