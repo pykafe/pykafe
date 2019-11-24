@@ -298,8 +298,15 @@ li.nav-item.active a {
     font-size: 24px;
     text-align: center;
     color: var(--blue-3);
-    height: 30px;
+    height: 65px;
     font-weight: 600;
+}
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    border-bottom-right-radius: calc(.25rem - 1px);
+    border-bottom-left-radius: calc(.25rem - 1px);
 }
 
 .title-activities {
