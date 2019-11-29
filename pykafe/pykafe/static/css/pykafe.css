@@ -276,6 +276,14 @@ li.nav-item.active a {
     color: white;
 }
 
+select {
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 160px;
+    margin-top: -11px;
+    position: absolute;
+}
+
 /* Blog activities */
 
 .block-blog {
