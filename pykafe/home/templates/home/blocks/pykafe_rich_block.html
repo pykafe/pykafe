@@ -2,28 +2,30 @@
 {% load wagtailimages_tags %}
 {% load i18n %}
 
-<div class="container dark-theme">
-    <div class="row">
-        <div class="col-md-12 title-activities">
-            <p>{{ self.title }}</p>
-        </div>
-    </div>
-    <div class="row">
-    {% for page in self.pages %}
-        {% if page.description and page.image %}
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card">
-                <div class="card-title">
-                    {{ page.title }}
-                </div>
-                {% image page.image fill-300x200 class="card-img-top" %}
-                <div class="card-body">
-                    <p class="card-text">{{ page.description |safe|truncatewords:"50"|linebreaks|richtext }}</p>
-                    <a href="{% pageurl page %}" class="btn-button">{% trans 'More Detail' %} >></a>
-                </div>
+<div class="dark-theme">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 title-activities">
+                <p>{{ self.title }}</p>
             </div>
         </div>
-        {% endif %}
-    {% endfor %}
-    </div>
+        <div class="row">
+            {% for page in self.pages %}
+            {% if page.description and page.image %}
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-title">
+                    {{ page.title }}
+                    </div>
+                    {% image page.image fill-300x200 class="card-img-top" %}
+                    <div class="card-body">
+                        <p class="card-text">{{ page.description |safe|truncatewords:"50"|linebreaks|richtext }}</p>
+                        <a href="{% pageurl page %}" class="btn-button">{% trans 'Show more...' %} </a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
 </div>

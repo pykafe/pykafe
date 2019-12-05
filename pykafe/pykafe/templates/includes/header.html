@@ -19,7 +19,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
           {% for page in home.get_children %}
-              {% if page.live %}
+              {% if page.live and page.show_in_menus %}
                   <li class="nav-item {% if self.url_path|startswith:page.url_path %} active {% endif %}">
                   <a class="navbar-brand" href="{% pageurl page %}">
                       {{ page.title }}
