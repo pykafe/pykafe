@@ -277,11 +277,12 @@ li.nav-item.active a {
 }
 
 select {
-    border-radius: 15px;
-    padding: 10px;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+ul.navbar-nav.mr-auto {
     margin-left: 160px;
-    margin-top: -11px;
-    position: absolute;
 }
 
 /* Blog activities */

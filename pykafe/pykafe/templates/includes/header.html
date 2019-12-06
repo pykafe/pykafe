@@ -34,7 +34,7 @@
             </a>
           <li>
           {% endif %}
-         <div class="language">
+          </ul>
             <form id="language_form" class="change_language" action="{% url 'set_language' %}" method="post" onChange="change_language()">{% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
             <select name="language">
@@ -49,7 +49,6 @@
             </select>
           </form>
          </div>
-          </ul>
           <!-- 
           <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
