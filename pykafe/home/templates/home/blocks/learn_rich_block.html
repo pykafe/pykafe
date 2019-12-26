@@ -22,12 +22,13 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade {% if self.pages.0.id == block.id %} show active {% endif %}" id="{{ block.id }}" role="tabpanel" aria-labelledby="{{ block.id }}">
                             {% for page in block.body %}
-                                <h1>{{ page.value.category_type }}</h1>
+                                <div align="{{ page.value.align }}">
+                                    <h1>{{ page.value.category_type }}</h1>
+                                </div>
                             {% endfor %}
                             <h3>{{ block.category }}</h3>
                             {% for page in block.body %}
-                                <p>{{ page.value.text|richtext }}</p>
-                                {{ page.value.table }}
+                                <div align="{{ page.value.align }}">{{ page.value.text|richtext }}</div>
                                 {% if page.block_type == 'code' %}
                                     {% spaceless %}
                                         {# This is ugly, as it'll inject this code for each block, but browsers are smart enough to not load each time. #}
@@ -41,7 +42,7 @@
                                                 </script>
                                             {% endif %}
                                             {% if key == "code" %}
-                                                <pre class="line-numbers">
+                                                <pre class="line-numbers" align="{{ page.value.align }}">
                                                     <code id="target-element-current">{{ val }}</code>
                                                 </pre>
                                                 <script>
