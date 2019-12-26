@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'tracking',
     'analytic',
     'leaflet',
-  
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'wagtail.core',
     'wagtail.contrib.modeladmin',
     'wagtailcodeblock',
+    'wagtail.contrib.table_block',
 
     'modelcluster',
     'taggit',
