@@ -2,12 +2,13 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtailcodeblock.blocks import CodeBlock
+from wagtail.contrib.table_block.blocks import TableBlock
 
 
 CHOICES_ALIGN = (
-        ('left', 'Left'), 
-        ('right', 'Right'), 
-        ('center', 'Center'), 
+        ('left', 'Left'),
+        ('right', 'Right'),
+        ('center', 'Center'),
         ('justify', 'Justify')
 )
 
@@ -46,30 +47,39 @@ class PykafeMap(blocks.StructBlock):
 
 # Kria Rich block ba category
 class CategoryRichBlock(blocks.StructBlock):
-    category_type = blocks.CharBlock(required=False, help_text="Add your category type")
-    categories = SnippetChooserBlock('home.LearnCategory', required=False)
+    pages = blocks.ListBlock(
+               blocks.PageChooserBlock(target_model="home.SubLearnContentPage", help_text='Add your page in here')
+    )
 
     class Meta:
         template = 'home/blocks/learn_rich_block.html'
 
 
-# Kria Rich block ba content 
+# Kria Rich block ba content
 class LearnRichBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(required=False, help_text='Add your content in here')
     align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
                required=True, default=('left', 'Left')
      )
-     
-    class Meta:
-        template = 'home/blocks/learn_rich_block.html'
 
 
-# Kria Rich block ba coding 
+# Kria Rich block ba coding
 class CodeRichBlock(blocks.StructBlock):
-    code = CodeBlock(label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)
+    code = CodeBlock(label='Source Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)
     align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
                required=True, default=('left', 'Left')
      )
 
-    class Meta:
-        template = 'home/blocks/learn_rich_block.html'
+
+class TableStreamBlock(blocks.StreamBlock):
+    table = TableBlock()
+    align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
+               required=True, default=('left', 'Left')
+     )
+
+
+class CategoryTypeRichBlock(blocks.StructBlock):
+    category_type = SnippetChooserBlock('home.LearnCategory_type', required=False)
+    align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
+               required=True, default=('left', 'Left')
+     )
