@@ -63,12 +63,27 @@ class LearnRichBlock(blocks.StructBlock):
      )
 
 
+class LinkStructValue(blocks.StructValue):
+    def url(self):
+        code_url = self.get('code_url')
+        page = self.get('page')
+        if code_url:
+            return code_url
+        elif page:
+            return page.url
+
+
 # Kria Rich block ba coding
 class CodeRichBlock(blocks.StructBlock):
+    code_url = blocks.URLBlock(label="External URL", required=False)
     code = CodeBlock(label='Source Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)
     align = blocks.ChoiceBlock(choices=CHOICES_ALIGN,
                required=True, default=('left', 'Left')
      )
+
+    class Meta:
+        icon = 'code'
+        value_class = LinkStructValue
 
 
 class TableStreamBlock(blocks.StreamBlock):

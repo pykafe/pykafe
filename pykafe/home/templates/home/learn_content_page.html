@@ -5,14 +5,6 @@
 
 {% block body_class %}template-homepage{% endblock %}
 {% block content %}
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-        table, td, th {
-            border: 1px solid black;
-        }
-    </style>
     {% image page.image original as page_image %}
     <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ page_image.url }}');background-size: cover;height: 500px;">
     </div>
