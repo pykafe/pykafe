@@ -1,0 +1,51 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags i18n staticfiles %}
+
+{% block extra_css %}
+    {% include "wagtailadmin/pages/_editor_css.html" %}
+    {{ block.super }}
+{% endblock %}
+
+{% block titletag %}{% trans 'Active Users' %}{% endblock %}
+
+
+{% block content %}
+    <header class="col12">
+        <div class="row nice-padding">
+            <div class="left">
+                <div class="col header-title">
+                    <h1 class="icon icon-fa-bar-chart">
+                        {% trans "Monitoring Active Users" %}
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wagalytics nice-padding">
+        <div class="col12 clearfix">
+            <h2>{% trans 'Total' %}: {{ count }}</h2>
+        </div>
+        <div class="col12 clearfix">
+            <table class="listing full-width">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans 'Username' %}</th>
+                  <th scope="col">{% trans 'IP Address' %}</th>
+                  <th scope="col">{% trans 'Session id' %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in data %}
+                <tr>
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.ip }}</td>
+                  <td>{{ user.session_id }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+{% endblock %}

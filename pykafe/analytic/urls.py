@@ -1,7 +1,10 @@
 
 from django.conf.urls import include, url
-from .views import dashboard
+from django.urls import include, path
+from .views import dashboard, active_users_info_view
+
 
 urlpatterns = [
-    url(r'^analytic/$', dashboard, name='analytic'),
+    path('active-users/', active_users_info_view, name="active_users"),
+    path(r'analytic/', dashboard, name='analytic'),
 ]

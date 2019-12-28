@@ -29,12 +29,28 @@ def register_admin_urls():
         re_path(r'^analytics/', include(urls)),
     ]
 
+@hooks.register('register_admin_urls')
+def register_admin_urls():
+    return [
+        re_path(r'^active-users/', include(urls)),
+    ]
+
 
 @hooks.register('register_admin_menu_item')
 def register_styleguide_menu_item():
     return MenuItem(
         _('Analytics'),
         reverse('analytic'),
+        classnames='icon icon-fa-bar-chart',
+        order=1000
+    )
+
+
+@hooks.register('register_admin_menu_item')
+def register_styleguide_menu_item():
+    return MenuItem(
+        _('Active users'),
+        reverse('active_users'),
         classnames='icon icon-fa-bar-chart',
         order=1000
     )
