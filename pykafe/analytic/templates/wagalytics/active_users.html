@@ -1,5 +1,6 @@
 {% extends "wagtailadmin/base.html" %}
 {% load wagtailadmin_tags i18n staticfiles %}
+{% load wagtailusers_tags%}
 
 {% block extra_css %}
     {% include "wagtailadmin/pages/_editor_css.html" %}
@@ -29,6 +30,7 @@
             <table class="listing full-width">
               <thead>
                 <tr>
+                  <th scope="col">{% trans 'Name' %}</th>
                   <th scope="col">{% trans 'Username' %}</th>
                   <th scope="col">{% trans 'IP Address' %}</th>
                   <th scope="col">{% trans 'Session id' %}</th>
@@ -37,6 +39,11 @@
               <tbody>
                 {% for user in data %}
                 <tr>
+                  <td class="title" valign="top">
+                        <div class="title-wrapper">
+                            <span class="avatar small"><img src="{% avatar_url user size=25 %}" alt="" /></span>
+                        </div>
+                  </td>
                   <td>{{ user.username }}</td>
                   <td>{{ user.ip }}</td>
                   <td>{{ user.session_id }}</td>
