@@ -51,6 +51,6 @@ def register_styleguide_menu_item():
     return MenuItem(
         _('Active users'),
         reverse('active_users'),
-        classnames='icon icon-fa-bar-chart',
+        classnames='icon icon-user',
         order=1000
     )
