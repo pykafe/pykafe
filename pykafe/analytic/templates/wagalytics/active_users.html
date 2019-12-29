@@ -42,7 +42,11 @@
                   <td class="title" valign="top">
                         <div class="title-wrapper">
                             <span class="avatar small"><img src="{% avatar_url user size=25 %}" alt="" /></span>
+                            <a href="{% url 'wagtailusers_users:edit' user.user_id %}">{{ user.username }}</a>
                         </div>
+                        <ul class="actions">
+                            <a class="button button-secondary button-small" href="{% url 'wagtailusers_users:edit' user.user_id %}">{% trans 'Edit' %}</a>
+                        </ul>
                   </td>
                   <td>{{ user.username }}</td>
                   <td>{{ user.ip }}</td>
