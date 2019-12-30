@@ -3,6 +3,7 @@ from tracking.models import Visitor, Pageview
 from django.contrib.gis.geoip2 import GeoIP2
 from geoip2.errors import AddressNotFoundError
 from active_users.api import get_active_users
+from django.contrib.auth import get_user_model
 
 
 def dashboard(request):
@@ -49,7 +50,9 @@ def dashboard(request):
 def active_users_info_view(request):
     """ View for info about active users """
     data = get_active_users()
+    User = get_user_model()
     return render(request, 'wagalytics/active_users.html', {
         'data': data,
-        'count': len(data)
+        'count': len(data),
+        'users': User.objects.all()
     })
