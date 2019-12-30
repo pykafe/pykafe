@@ -34,7 +34,7 @@
             <div class="col-md-4">
                 {% for block in self.pages %}
                     {% for page in block.body %}
-                        <h4>{{ page.value.category_type }}</h4>
+                        <h3>{{ page.value.category_type }}</h3>
                     {% endfor %}
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link {% if self.pages.0.id == block.id %} active {% endif %}" id="v-pills-{{ block.id }}-tab" data-toggle="pill" href="#{{ block.id }}" role="tab" aria-controls="v-pills-{{ block.category }}" aria-selected="false">

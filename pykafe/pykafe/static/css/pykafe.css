@@ -390,3 +390,16 @@ ul.navbar-nav {
 .change_language {
     margin-top: 10px;
 }
+
+div.responsive-object {
+    padding-bottom: 23px!important;
+}
+
+div.responsive-object iframe {
+    width: 100%;
+}
+
+a.active {
+    color: #5897fb!important;
+    background-color: #dcedfe!important;
+}
