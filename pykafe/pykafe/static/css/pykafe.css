@@ -402,4 +402,11 @@ div.responsive-object iframe {
 a.active {
     color: #5897fb!important;
     background-color: #dcedfe!important;
+    height: 40px!important;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+    background-color: #eee;
+    height: 40px!important;
 }
