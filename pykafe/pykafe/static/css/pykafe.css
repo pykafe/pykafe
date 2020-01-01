@@ -399,13 +399,13 @@ div.responsive-object iframe {
     width: 100%;
 }
 
-a.active {
+div.flex-column>a.active {
     color: #5897fb!important;
     background-color: #dcedfe!important;
     height: 40px!important;
 }
 
-a:focus, a:hover {
+div.nav>a:focus, div.nav>a:hover {
     text-decoration: none;
     background-color: #eee;
     height: 40px!important;
