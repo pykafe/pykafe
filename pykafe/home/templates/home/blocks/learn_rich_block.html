@@ -30,11 +30,15 @@
         .flex-column {
             height: 34px;
         }
+        .categories-column {
+            background-color: var(--blue-2);
+            padding-top: 15px;
+        }
     </style>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 categories-column">
                 {% for block in self.pages %}
                     {% for page in block.body %}
                         <h3>{{ page.value.category_type }}</h3>
