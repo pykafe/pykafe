@@ -38,6 +38,8 @@
 
     <div class="container">
         <div class="row">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if self.languages ==  LANGUAGE_CODE  %}
             <div class="col-md-4 categories-column">
                 {% for block in self.pages %}
                     {% for page in block.body %}
@@ -123,5 +125,6 @@
                     </div>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>

@@ -3,6 +3,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtailcodeblock.blocks import CodeBlock
 from wagtail.contrib.table_block.blocks import TableBlock
+from pykafe.settings.base import LANGUAGES
 
 
 CHOICES_ALIGN = (
@@ -46,7 +47,10 @@ class PykafeMap(blocks.StructBlock):
 
 
 # Kria Rich block ba category
-class CategoryRichBlock(blocks.StructBlock):
+class PageLearnRichBlock(blocks.StructBlock):
+    languages = blocks.ChoiceBlock(choices=tuple(LANGUAGES),
+               required=True, default=('left', 'Left')
+     )
     pages = blocks.ListBlock(
                blocks.PageChooserBlock(target_model="home.SubLearnContentPage", help_text='Add your page in here')
     )

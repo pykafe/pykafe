@@ -5,7 +5,7 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from .blocks import PykafeRichBlock, PageLinksBlock, PykafeMap, LearnRichBlock, CategoryRichBlock, CodeRichBlock, TableStreamBlock, CategoryTypeRichBlock
+from .blocks import PykafeRichBlock, PageLinksBlock, PykafeMap, LearnRichBlock, PageLearnRichBlock, CodeRichBlock, TableStreamBlock, CategoryTypeRichBlock
 
 
 class HomePage(Page):
@@ -74,7 +74,7 @@ class LearnContentPage(Page):
 
     body = StreamField(
             [
-                ('Pages', CategoryRichBlock(null=True, blank=True)),
+                ('Pages', PageLearnRichBlock(null=True, blank=True)),
             ]
         )
 
