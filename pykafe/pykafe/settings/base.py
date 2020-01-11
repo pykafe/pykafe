@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'tracking',
     'analytic',
     'leaflet',
-  
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -66,6 +66,7 @@ MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'active_users.middleware.ActiveUsersSessionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -227,3 +228,15 @@ LEAFLET_CONFIG = {
     'SPATIAL_EXTENT': (124.7168, -9.7063, 127.3233, -8.1245),
     'SCALE': 'both',
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+ACTIVE_USERS_KEY_CLASS = 'analytic.keys.PykafeActiveUserEntry'

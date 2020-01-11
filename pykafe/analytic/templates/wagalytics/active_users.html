@@ -1,0 +1,74 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags i18n staticfiles %}
+{% load wagtailusers_tags%}
+
+{% block extra_css %}
+    {% include "wagtailadmin/pages/_editor_css.html" %}
+    {{ block.super }}
+    <style>
+        .circle-border {
+            border: 2px solid var(--green-2);
+        }
+    </style>
+{% endblock %}
+
+{% block titletag %}{% trans 'Active Users' %}{% endblock %}
+
+
+{% block content %}
+    <header class="col12">
+        <div class="row nice-padding">
+            <div class="left">
+                <div class="col header-title">
+                    <h1 class="icon icon-fa-bar-chart">
+                        {% trans "Monitoring Active Users" %}
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wagalytics nice-padding">
+        <div class="col12 clearfix">
+            <h2>{% trans 'Total' %}: {{ count }}</h2>
+        </div>
+        <div class="col12 clearfix">
+            <table class="listing full-width">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans 'Name' %}</th>
+                  <th scope="col">{% trans 'Username' %}</th>
+                  <th scope="col">{% trans 'IP Address' %}</th>
+                  <th scope="col">{% trans "Level" %}</th>
+                  <th scope="col">{% trans "Status" %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user_active in data %}
+                {% for user in users %}
+                {% if user.username == user_active.username %}
+                <tr>
+                  <td class="title" valign="top">
+                    <div class="title-wrapper">
+                        <span class="avatar small circle-border"><img src="{% avatar_url user size=25 %}" alt="" /></span>
+                            <a href="{% url 'wagtailusers_users:edit' user.pk %}">{{ user.get_full_name|default:user.get_username }}</a>
+                    </div>
+                    <ul class="actions">
+                        {% user_listing_buttons user %}
+                    </ul>
+                  </td>
+                  <td class="username" valign="top">{{ user_active.username }}</td>
+                  <td valign="top">{{ user_active.ip }}</td>
+                  <td class="level" valign="top">{% if user.is_superuser %}{% trans "Admin" %}{% endif %}</td>
+                  <td class="status" valign="top"><div class="status-tag {% if user.is_active %}primary{% endif %}">{% if user.is_active %}{% trans "Active" %}{% else %}{% trans "Inactive" %}{% endif %}</div></td>
+
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+{% endblock %}
