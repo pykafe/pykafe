@@ -30,17 +30,16 @@
         .flex-column {
             height: 34px;
         }
-        .categories-column {
-            background-color: var(--blue-1);
-            padding-top: 15px;
-        }
     </style>
 
     <div class="container">
         <div class="row">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% if self.languages ==  LANGUAGE_CODE  %}
-            <div class="col-md-4 categories-column">
+            <div class="col-md-4">
+                <div align="center">
+                    {% image self.logo_images width-400 %}
+                </div>
                 {% for block in self.pages %}
                     {% for page in block.body %}
                         <h3>{{ page.value.category_type }}</h3>
