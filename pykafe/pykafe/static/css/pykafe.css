@@ -390,3 +390,23 @@ ul.navbar-nav {
 .change_language {
     margin-top: 10px;
 }
+
+div.responsive-object {
+    padding-bottom: 23px!important;
+}
+
+div.responsive-object iframe {
+    width: 100%;
+}
+
+div.flex-column>a.active {
+    color: #5897fb!important;
+    background-color: #dcedfe!important;
+    height: 40px!important;
+}
+
+div.nav>a:focus, div.nav>a:hover {
+    text-decoration: none;
+    background-color: #eee;
+    height: 40px!important;
+}

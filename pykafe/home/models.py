@@ -1,15 +1,11 @@
 from django.db import models
-
-
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
-from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from .blocks import PykafeRichBlock, PageLinksBlock, PykafeMap, LearnRichBlock, CategoryRichBlock, CodeRichBlock
+from .blocks import PykafeRichBlock, PageLinksBlock, PykafeMap, LearnRichBlock, PageLearnRichBlock, CodeRichBlock, TableStreamBlock, CategoryTypeRichBlock
 
 
 class HomePage(Page):
@@ -78,9 +74,7 @@ class LearnContentPage(Page):
 
     body = StreamField(
             [
-                ('categories', CategoryRichBlock(dafault='', null=True, blank=True)),
-                ('content', LearnRichBlock(null=True, blank=True)),
-                ('code', CodeRichBlock(null=True, blank=True)),
+                ('Pages', PageLearnRichBlock(null=True, blank=True)),
             ]
         )
 
@@ -89,37 +83,32 @@ class LearnContentPage(Page):
         StreamFieldPanel('body'),
     ]
 
-    template = 'home/home_page.html'
+
+class SubLearnContentPage(Page):
+    category = models.CharField(max_length=255, blank=True, null=True)
+
+    body = StreamField(
+            [
+                ('category_type', CategoryTypeRichBlock(null=True, blank=True)),
+                ('content', LearnRichBlock(null=True, blank=True)),
+                ('code', CodeRichBlock(null=True, blank=True)),
+                ('table', TableStreamBlock(null=True, blank=True)),
+            ]
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('category', classname="full"),
+        StreamFieldPanel('body'),
+    ]
 
 
-# registu ka import funsaun decorator no kria category
 @register_snippet
-class LearnCategory(models.Model):
-    name = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, max_length=80)
+class LearnCategory_type(models.Model):
+    name = models.CharField(max_length=255, null=True, blank=True)
 
     panels = [
         FieldPanel('name'),
-        FieldPanel('slug'),
     ]
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        verbose_name = "Category"
-        verbose_name_plural = "Categories"
-
-
-# Kria model koneksaun entre Class LearnContentPage no LearnCategory
-class LearnPageLearnCategory(models.Model):
-    page = ParentalKey('home.LearnContentPage', on_delete=models.CASCADE)
-    learn_category = models.ForeignKey(
-        'home.LearnCategory', on_delete=models.CASCADE)
-
-    panels = [
-        SnippetChooserPanel('learn_category'),
-    ]
-
-    class Meta:
-        unique_together = ('page', 'learn_category')
