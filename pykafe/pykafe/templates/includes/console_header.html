@@ -18,10 +18,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
           {% for page in home.get_children %}
-              {% if page.live %}
-                <a class="navbar-brand" href="{% pageurl page %}">
-                    {{ page.title }}
-                </a>
+              {% if page.live and page.show_in_menus %}
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% pageurl page %}">
+                        {{ page.title }}
+                     </a>
+                </li>
               {% endif %}
           {% endfor %}
           <li class="nav-item">
