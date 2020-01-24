@@ -1,0 +1,66 @@
+{% load pykafe %}
+{% load wagtailcore_tags i18n %}
+
+<nav class="navbar navbar-expand-lg header">
+
+     <div class="container navbar-header">
+         {% get_site_root as home %}
+         <a class="navbar-brand" href="{% pageurl home %}">
+             {% include 'includes/logo_colours.html' %}
+         </a>
+
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+             <span class="navbar-toggler-icon"></span>
+             <span class="navbar-toggler-icon"></span>
+         </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          {% for page in home.get_children %}
+              {% if page.live %}
+                <a class="navbar-brand" href="{% pageurl page %}">
+                    {{ page.title }}
+                </a>
+              {% endif %}
+          {% endfor %}
+          <li class="nav-item">
+            <a class="navbar-brand" href="{% url 'console' %}">
+                {% trans "Console" %}
+            </a>
+          <li>
+          {% if request.user.is_active %}
+          <li class="nav-item">
+            <a class="navbar-brand" href="{% url 'konversa' %}">
+                {% trans "Chat" %}
+            </a>
+          <li>
+          {% endif %}
+          <form id="language_form" class="change_language" action="{% url 'set_language' %}" method="post" onChange="change_language()">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.name_local }}
+                    </option>
+                {% endfor %}
+            </select>
+          </form>
+          </ul>
+          <!-- 
+          <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          -->
+          </div>
+    </div>
+    <script>
+        function change_language(){
+            document.getElementById("language_form").submit();
+        }
+    </script>
+</nav>

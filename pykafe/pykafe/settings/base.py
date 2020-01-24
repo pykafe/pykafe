@@ -214,7 +214,7 @@ mattermost = dict(
 )
 
 consolepython = dict(
-    url = "http://brython.info/console.html",
+    url = "https://console.python.org/python-dot-org-console/",
 )
 
 # Language of code block
