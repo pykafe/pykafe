@@ -1,0 +1,64 @@
+/* This is custom style for admin */
+header h1 {
+    line-height: 1.3em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+h3#other-searches-title {
+    color: black;
+    font-weight: 600;
+}
+
+textarea:focus {
+    background-color: #f2fcfc;
+    border-color: #00b0b1; */
+    z-index: 2;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #154a76;
+    border-radius: 4px;
+    border: 1px solid #3e7bad;
+}
+
+div > .content-wrapper, .wrapper, .nav-wrapper {
+    background-color: #052641;
+}
+
+nav-wrapper, .nav-wrapper .inner {
+    background-color: #052641;
+}
+
+.nav-search input {
+    background-color: #052641;
+}
+
+.fields li.full {
+    position: relative;
+    padding: 0;
+    float: none;
+    height: auto;
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 2px;
+}
+
+input[type=text]:focus, [type=password]:focus, [name=password]:focus {
+    z-index: 2;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #154a76;
+    border-radius: 4px;
+    border: 1px solid #3e7bad;
+    position: sticky;
+}
+
+.custom-login {
+    text-align: center;
+}
+
+span.logo-2.login-logo {
+    font-size: 100px;
+}
+
+.fields > li > button{
+    float: right;
+}

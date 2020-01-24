@@ -1,6 +1,7 @@
 {% extends "wagtailadmin/base.html" %}
 {% load wagtailadmin_tags i18n staticfiles %}
 {% load leaflet_tags %}
+{% load cache %}
 
 {% block extra_css %}
     {% leaflet_js %}
@@ -70,30 +71,38 @@
 
     <script>
         var backgroundcolor = [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
+            '#052641',
+            '#7CC4FF',
+            '#3E7BAD',
+            '#049254',
+            '#F9E263',
+            '#0BBF71',
+            '#154A76',
+            '#D3B719',
+            '#40F6A7',
         ]
         var bordercolor = [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
+            '#052641',
+            '#7CC4FF',
+            '#3E7BAD',
+            '#049254',
+            '#F9E263',
+            '#0BBF71',
+            '#154A76',
+            '#D3B719',
+            '#40F6A7',
         ]
         var options = {scales: {yAxes: [{ticks: {beginAtZero: true}}]}}
 
         var ctx = document.getElementById('visitoruser');
         var keys = []
         var visitors = []
+        {% cache 600 visitor.items %}
         {% for key, visitor in visitor.items %}
             keys.push("{{key}}")
             visitors.push({{visitor|length}})
         {%endfor%}
+        {% endcache %}
         var visitoruser = new Chart(ctx, {
             type: 'line',
             data: {
@@ -111,10 +120,12 @@
 
         var pages_key = []
         var pages = []
+        {% cache 600 pageview.items %}
         {% for key, page in pageview.items %}
             pages_key.push("{{ key }}")
             pages.push({{ page }})
         {%endfor%}
+        {% endcache %}
         var ctx = document.getElementById('pageview');
         var pageview = new Chart(ctx, {
             type: 'bar',
@@ -149,10 +160,12 @@
 
         var country_keys = []
         var countries = []
+        {% cache 600 country_name.items %}
         {% for country_key, country in country_name.items %}
             country_keys.push("{{ country_key }}")
             countries.push({{ country|length }})
         {%endfor%}
+        {% endcache %}
         var ctx = document.getElementById('countryname');
         var countryname = new Chart(ctx, {
             type: 'doughnut',
@@ -170,10 +183,12 @@
         });
         var user_keys = []
         var count_users = []
+        {% cache 600 count_users.items %}
         {% for user_key, count_user in count_users.items %}
             user_keys.push("{{ user_key }}")
             count_users.push({{ count_user|length }})
         {%endfor%}
+        {% endcache %}
         var ctx = document.getElementById('countusers');
         var countryname = new Chart(ctx, {
             type: 'doughnut',
@@ -200,10 +215,12 @@
                 });
 
                 {% if geolocation %}
+                    {% cache 600 geolocation.items %}
                     {% for geo_key, geolocation_user in geolocation.items %}
                         var marker = new L.marker({{ geolocation_user|slice:"1:3" }}, { icon: markerIcon }).bindPopup("{{ geolocation_user|slice:':1' }}").openPopup();
                         marker.addTo(map);
                     {%endfor%}
+                    {% endcache%}
                 {%endif%}
             }
 

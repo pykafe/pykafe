@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.contrib import admin
 
 from wagtail.admin import urls as wagtailadmin_urls
@@ -9,26 +9,28 @@ from django.conf.urls.i18n import i18n_patterns
 
 from search import views as search_views
 from .views import KonversaView, ConsolePython
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    url(r'^django-admin/', admin.site.urls),
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
+    path('pykafe-admin/', admin.site.urls),
+    path('admin/', include(wagtailadmin_urls)),
+    path('documents/', include(wagtaildocs_urls)),
 ]
 
-urlpatterns += i18n_patterns(
+urlpatterns += [
     # These URLs will have /<language_code>/ appended to the beginning
-    url('i18n/', include('django.conf.urls.i18n')),
-    url(r'konversa/', KonversaView.as_view(), name='konversa'),
-    url(r'console/', ConsolePython.as_view(), name='console'),
-    url(r'^search/$', search_views.search, name='search'),
-    url(r'', include(wagtail_urls)),
-)
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('konversa/', KonversaView.as_view(), name='konversa'),
+    path('console/', ConsolePython.as_view(), name='console'),
+    path('sw.js', TemplateView.as_view(template_name='sw.js', content_type='application/javascript'), name="sw_js"),
+    path('search/', search_views.search, name='search'),
+    path('', include(wagtail_urls)),
+]
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns[0:0] += [
-        url(r'^rosetta/', include('rosetta.urls'))
+        path('rosetta/', include('rosetta.urls'))
     ]
 
 if settings.DEBUG:
