@@ -26,18 +26,11 @@
                 </li>
               {% endif %}
           {% endfor %}
-          <li class="nav-item active">
-            <a class="navbar-brand" href="{% url 'console' %}">
-                {% trans "Console" %}
-            </a>
-          <li>
-          {% if request.user.is_active %}
           <li class="nav-item">
             <a class="navbar-brand" href="{% url 'konversa' %}">
                 {% trans "Chat" %}
             </a>
           <li>
-          {% endif %}
           <form id="language_form" class="change_language" action="{% url 'set_language' %}" method="post" onChange="change_language()">{% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
             <select name="language">
