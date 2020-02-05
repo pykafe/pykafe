@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'captcha',
+    'wagtailcaptcha',
 ]
 
 MIDDLEWARE = (
@@ -241,3 +243,7 @@ CACHES = {
 }
 
 ACTIVE_USERS_KEY_CLASS = 'analytic.keys.PykafeActiveUserEntry'
+# I'm not a robot
+RECAPTCHA_PUBLIC_KEY = "public_key"
+RECAPTCHA_PRIVATE_KEY = "private_key"
+NOCAPTCHA = True
