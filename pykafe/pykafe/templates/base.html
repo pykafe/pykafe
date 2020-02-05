@@ -16,19 +16,21 @@
         </title>
 
         <!-- Required meta tags -->
-	    <meta charset="utf-8">
+        <meta charset="utf-8">
         <meta name="description" content="" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="shortcut icon" type="image/png" href="{% static 'images/logo_pykafe.png' %}"/>
         <!-- Bootstrap CSS -->
         <link type="text/css" rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'wagtailcodeblock/css/prism.min.css' %}" />
 
         <!-- Optional JavaScript -->
         <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'popper.js/dist/umd/popper.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'jquery/dist/jquery.slim.min.js' %}"></script>
+        <script type='text/javascript' src="{% static 'wagtailcodeblock/js/prism.min.js' %}" ></script>
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/pykafe.css' %}">
@@ -54,6 +56,7 @@
         {% endblock %}
 
         {% include 'includes/footer.html' %}
+
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
@@ -67,7 +70,6 @@
                 });
             }
         </script>
-
 
     </body>
 </html>
