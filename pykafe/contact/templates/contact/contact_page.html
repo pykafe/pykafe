@@ -16,22 +16,22 @@
 <div class="container">
   <p>{{ self.intro|richtext }}</p>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-7">
         <form action="{% pageurl page %}" method="POST">
           {% csrf_token %}
           <div class="form-row">
-            <div class="form-group col-md-11">
+            <div class="form-group col-md-12">
                 {{ form.as_p }}
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col-md-11">
+            <div class="form-group col-md-12">
               <button type="submit" class="btn btn-primary contact-button">{% trans 'Submit' %}</button>
             </div>
           </div>
         </form>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
         <h3>{% trans 'Our Place' %}</h3>
         <span>{% trans 'Street Address' %}</span>
         <br>
