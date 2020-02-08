@@ -19,6 +19,12 @@ Se iha server ita presisa download GeoLite2-Country:
 - tar -xvzf GeoLite2-City*.gz
 - mv GeoLite2-City GeoLite2_City
 
+- settings/base.py
+    - RECAPTCHA_PUBLIC_KEY = "public_key"
+    - RECAPTCHA_PRIVATE_KEY = "private_key"
+    - Atu tau `public_key` no `private_key` presisa ba registu iha link ida ne'e: https://www.google.com/recaptcha/intro/v3.html
+    - Admin console
+
 No tuir mai:
 1. git clone git@github.com:pykafe/pykafe.git
 2. pip install -r requirements.txt
