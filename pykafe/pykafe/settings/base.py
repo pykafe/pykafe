@@ -215,6 +215,10 @@ mattermost = dict(
     url = "https://pykafe.pykafe.dns-cloud.net",
 )
 
+consolepython = dict(
+    url = "https://console.python.org/python-dot-org-console/",
+)
+
 # Language of code block
 WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('css', 'CSS'),
