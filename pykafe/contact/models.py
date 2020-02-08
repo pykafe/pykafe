@@ -18,6 +18,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from datetime import date
 from home.blocks import PykafeMap
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 # Create your models here.
 
@@ -25,7 +26,7 @@ class FormField(AbstractFormField):
     page = ParentalKey('ContactPage', on_delete=models.CASCADE, related_name='custom_form_fields')
 
 
-class ContactPage(AbstractEmailForm):
+class ContactPage(WagtailCaptchaEmailForm):
     image_title = models.CharField(max_length=255, blank=True,)
     image = models.ForeignKey(
         'wagtailimages.Image',
