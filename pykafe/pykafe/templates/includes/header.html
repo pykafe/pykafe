@@ -16,7 +16,7 @@
          </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="nav navbar-nav navbar-right">
           {% for page in home.get_children %}
               {% if page.live and page.show_in_menus %}
                   <li class="nav-item {% if self.url_path|startswith:page.url_path %} active {% endif %}">
@@ -33,7 +33,7 @@
           <li>
           <form id="language_form" class="change_language" action="{% url 'set_language' %}" method="post" onChange="change_language()">{% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
-            <select name="language">
+            <select name="language" id="language_select" class="form-control">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
                 {% get_language_info_list for LANGUAGES as languages %}

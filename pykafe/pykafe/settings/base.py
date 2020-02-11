@@ -149,11 +149,10 @@ USE_TZ = True
 LANGUAGES = [
     ('tet', 'Tetum'),
     ('en', 'English'),
-    ('pt', 'Portugues')
 ]
 
 EXTRA_LANG_INFO = dict(
-    tet = {
+    tet={
         'bidi': False,
         'code': 'tet',
         'name': 'Tetum',
@@ -192,7 +191,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-GEOIP_PATH =  os.path.join(BASE_DIR, 'GeoLite2_City')
+GEOIP_PATH = os.path.join(BASE_DIR, 'GeoLite2_City')
 
 
 # Wagtail settings
@@ -214,11 +213,11 @@ TRACK_REFERER = True
 TRACK_QUERY_STRING = True
 
 mattermost = dict(
-    url = "https://pykafe.pykafe.dns-cloud.net",
+    url="https://pykafe.pykafe.dns-cloud.net",
 )
 
 consolepython = dict(
-    url = "https://console.python.org/python-dot-org-console/",
+    url="https://console.python.org/python-dot-org-console/",
 )
 
 # Language of code block

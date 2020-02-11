@@ -75,23 +75,27 @@ h1 {
     font-size: 36px;
     font-family: 'Comfortaa';
     color: var(--blue-2);
+    font-weight: 600;
 }
 
 h2 {
     font-family: 'Comfortaa';
     font-size: 30px;
     color: var(--green-2);
+    font-weight: 600;
 }
 
 h3 {
     font-family: 'Comfortaa';
     font-size: 24px;
     color: var(--yellow-2);
+    font-weight: 600;
 }
 
 h4 {
     font-size: 18px;
     color: var(--blue-1);
+    font-weight: 600;
 }
 
 b {
@@ -199,11 +203,16 @@ button {
     width: 100%;
     height: 45px;
 }
+.horizontal-line {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
 
 /* SPECIFIC COLORS SCHEME FOR DARK THEME */
 .dark-theme {
     background-color: var(--blue-1);
-    margin-top: 50px;
     color: var(--yellow-4);
 }
 
@@ -211,6 +220,7 @@ button {
     font-size: 36px;
     font-family: 'Comfortaa';
     color: var(--yellow-3);
+    font-weight: 600;
 }
 
 .dark-theme h2 {
@@ -231,7 +241,7 @@ button {
 }
 
 .dark-theme a {
-    color: var(--green-3);
+    color: var(--yellow-4);
     text-decoration: none;
 }
 
@@ -242,6 +252,32 @@ button {
 .dark-theme b {
     color: var(--yellow-4);
     font-weight: 600;
+}
+.dark-theme .horizontal-line {
+    border-top: 1px solid rgb(253, 252, 248);
+}
+
+.dark-theme nav.footer {
+    background-color: var(--yellow-4);
+    height: 80px;
+    position: relative;
+    color: #052641;
+}
+
+.dark-theme .footer div {
+    color: var(--blue-3);
+    margin: auto;
+    line-height: 24px;
+}
+
+.switching-theme {
+    float: right;
+}
+
+#theme_text {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
 }
 
 /* FOOTER */
@@ -265,7 +301,6 @@ nav.footer {
 .header {
     background-color: var(--blue-1);
     border-bottom: none;
-    padding: 0px;
 }
 
 .header a {
@@ -357,6 +392,16 @@ li.nav-item.active a {
     margin-top: 6px;
 }
 
+select#language_select {
+    color: var(--yellow-4);
+    background-color: var(--blue-1);
+    cursor: pointer;
+}
+
+select#language_select:hover {
+    color: var(--green-3);
+}
+
 ul.navbar-nav {
     margin-left: auto;
     margin-right: 0px;
@@ -379,16 +424,26 @@ ul.navbar-nav {
         background: var(--gray);
         margin: 9px;
     }
+
+    select#language_select {
+        width: auto;
+        margin-bottom: 24px;
+    }
+
+    h1, .dark-theme h1 {
+        font-size: 24px;
+    }
+	.block-paragraph {
+        margin-top: 20px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
 }
 
 .konversa {
     border: none;
     height:calc(100% - 80px);
     width: 100%;
-}
-
-.change_language {
-    margin-top: 10px;
 }
 
 div.responsive-object {
@@ -411,17 +466,44 @@ div.nav>a:focus, div.nav>a:hover {
     height: 40px!important;
 }
 
+.live-demo {
+	width: 100%;
+	text-align: right;
+	position: relative;
+	top: 7px;
+}
+
+.table-learn-page .block-table  > table {
+	border-collapse: collapse;
+}
+
+.table-learn-page .block-table table tbody tr th {
+	border: 1px solid #dee2e6;
+}
+
+.table-learn-page .block-table table tbody tr td {
+	border: 1px solid #dee2e6;
+}
+
+.flex-column {
+	height: 34px;
+}
+
+.richtext-image {
+	margin-left: 100px;
+}
+
 #id_messages, #id_email, #id_name, #id_subject {
-    display: block;
-    width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	display: block;
+	width: 100%;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
