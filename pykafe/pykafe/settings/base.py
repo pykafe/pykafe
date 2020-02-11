@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'captcha',
+    'wagtailcaptcha',
 ]
 
 MIDDLEWARE = (
@@ -215,6 +217,10 @@ mattermost = dict(
     url = "https://pykafe.pykafe.dns-cloud.net",
 )
 
+consolepython = dict(
+    url = "https://console.python.org/python-dot-org-console/",
+)
+
 # Language of code block
 WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('css', 'CSS'),
@@ -241,3 +247,7 @@ CACHES = {
 }
 
 ACTIVE_USERS_KEY_CLASS = 'analytic.keys.PykafeActiveUserEntry'
+# I'm not a robot
+RECAPTCHA_PUBLIC_KEY = "public_key"
+RECAPTCHA_PRIVATE_KEY = "private_key"
+NOCAPTCHA = True
