@@ -20,15 +20,15 @@
             {% endfor %}
         </div>
         <div class="col-md-8">
-            <button class="btn btn-success switching-theme" id="theme_text" onclick="switching_theme()">Dark mode</button>
+            <button class="btn btn-success switching-theme" id="theme_text" onclick="switching_theme()">{% trans 'Dark mode' %}</button>
             <script>
                 function switching_theme() {
                     var element = document.body;
                     var toggle_text = document.getElementById("theme_text");
                     if (toggle_text.innerHTML === "Dark mode") {
-                      toggle_text.innerHTML = "Light mode";
+                        toggle_text.innerHTML = "Light mode";
                     } else {
-                      toggle_text.innerHTML = "Dark mode";
+                        toggle_text.innerHTML = "Dark mode";
                     }
                     element.classList.toggle("dark-theme");
                 }
@@ -74,7 +74,7 @@
                     {% endspaceless %}
                     {% endif %}
                     {% if page.block_type == 'table' %}
-                    <div align="center">
+                    <div class="table-learn-page"align="center">
                         {% include_block page %}
                     </div>
                     {% endif %}
