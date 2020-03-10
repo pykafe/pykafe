@@ -10,7 +10,7 @@ if (workbox) {
     workbox.core.clientsClaim();
 
     workbox.routing.registerRoute(
-        new RegExp('/media/.+'),
+        new RegExp('/media/.*'),
         workbox.strategies.staleWhileRevalidate()
     );
 
