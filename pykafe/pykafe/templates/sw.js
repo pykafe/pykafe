@@ -12,16 +12,6 @@ if (workbox) {
     );
 
     workbox.routing.registerRoute(
-        new RegExp('/pykafe-admin/.*'),
-        workbox.strategies.NetworkOnly()
-    );
-
-    workbox.routing.registerRoute(
-        new RegExp('/rosetta/.*'),
-        workbox.strategies.NetworkOnly()
-    );
-
-    workbox.routing.registerRoute(
         new RegExp('.*'),
         workbox.strategies.NetworkFirst()
     );
@@ -30,5 +20,4 @@ if (workbox) {
         new RegExp('/static/.*'),
         workbox.strategies.CacheFirst()
     );
-    workbox.routing.setDefaultHandler(workbox.strategies.networkOnly());
 }
