@@ -20,4 +20,19 @@ if (workbox) {
         new RegExp('/static/.*'),
         workbox.strategies.cacheFirst()
     );
+
+    workbox.routing.registerRoute(
+        new RegExp('/admin/.*'),
+        workbox.strategies.networkOnly()
+    );
+
+    workbox.routing.registerRoute(
+        new RegExp('/rosetta/.*'),
+        workbox.strategies.networkOnly()
+    );
+
+    workbox.routing.registerRoute(
+        new RegExp('/pykafe-admin/.*'),
+        workbox.strategies.networkOnly()
+    );
 }
