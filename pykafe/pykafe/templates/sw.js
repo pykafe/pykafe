@@ -11,32 +11,32 @@ if (workbox) {
 
     workbox.routing.registerRoute(
         new RegExp('/media/.*'),
-        workbox.strategies.staleWhileRevalidate()
+        new workbox.strategies.staleWhileRevalidate()
     );
 
     workbox.routing.registerRoute(
         new RegExp('/admin/.*'),
-        workbox.strategies.NetworkOnly()
+        new workbox.strategies.NetworkOnly()
     );
 
     workbox.routing.registerRoute(
         new RegExp('/pykafe-admin/.*'),
-        workbox.strategies.NetworkOnly()
+        new workbox.strategies.NetworkOnly()
     );
 
     workbox.routing.registerRoute(
         new RegExp('/rosetta/.*'),
-        workbox.strategies.NetworkOnly()
+        new workbox.strategies.NetworkOnly()
     );
 
     workbox.routing.registerRoute(
         new RegExp('.*'),
-        workbox.strategies.NetworkFirst()
+        new workbox.strategies.NetworkFirst()
     );
 
     workbox.routing.registerRoute(
         new RegExp('/static/.*'),
-        workbox.strategies.CacheFirst()
+        new workbox.strategies.CacheFirst()
     );
     workbox.routing.setDefaultHandler(workbox.strategies.networkOnly());
 }
