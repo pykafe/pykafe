@@ -13,7 +13,7 @@ if (workbox) {
 
     workbox.routing.registerRoute(
         new RegExp('.*'),
-        workbox.strategies.NetworkFirst()
+        workbox.strategies.networkFirst()
     );
 
     workbox.routing.registerRoute(
