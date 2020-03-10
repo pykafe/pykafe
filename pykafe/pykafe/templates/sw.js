@@ -18,6 +18,6 @@ if (workbox) {
 
     workbox.routing.registerRoute(
         new RegExp('/static/.*'),
-        workbox.strategies.CacheFirst()
+        workbox.strategies.cacheFirst()
     );
 }
