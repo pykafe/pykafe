@@ -15,7 +15,17 @@ if (workbox) {
     );
 
     workbox.routing.registerRoute(
-        new RegExp('/(accounts|admin)/.*'),
+        new RegExp('/admin/.*'),
+        workbox.strategies.NetworkOnly()
+    );
+
+    workbox.routing.registerRoute(
+        new RegExp('/pykafe-admin/.*'),
+        workbox.strategies.NetworkOnly()
+    );
+
+    workbox.routing.registerRoute(
+        new RegExp('/rosetta/.*'),
         workbox.strategies.NetworkOnly()
     );
 
