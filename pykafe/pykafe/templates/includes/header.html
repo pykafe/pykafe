@@ -1,6 +1,7 @@
 {% load pykafe %}
 {% load wagtailcore_tags i18n %}
 {% load static wagtailcore_tags wagtailimages_tags %}
+{% load static %}
 
 <nav class="navbar navbar-expand-lg header">
     
@@ -15,6 +16,7 @@
              <span class="navbar-toggler-icon"></span>
              <span class="navbar-toggler-icon"></span>
          </button>
+
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
@@ -35,27 +37,21 @@
           <li>
           {% endif %}
           </ul>
-            <form id="language_form" class="change_language" action="{% url 'set_language' %}" method="post" onChange="change_language()">{% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
             <select name="language">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
                 {% get_language_info_list for LANGUAGES as languages %}
                 {% for language in languages %}
-                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                        {{ language.name_local }}
+                <option value="{{ language.code }}" data-icon="{% static 'images/pt.jpg' %}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                    <a href="{% static 'images/pt.jpg' %}"></a> {{ language.name_local }} ({{ language.code }})
+
                     </option>
                 {% endfor %}
             </select>
           </form>
          </div>
-          <!-- 
-          <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-          -->
-          </div>
+        </div>
     </div>
     <script>
         function change_language(){
