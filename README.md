@@ -24,6 +24,8 @@ Se iha server ita presisa download GeoLite2-Country:
     - RECAPTCHA_PRIVATE_KEY = "private_key"
     - Atu tau `public_key` no `private_key` presisa ba registu iha link ida ne'e: https://www.google.com/recaptcha/intro/v3.html
     - Admin console
+    - 
+For mac run redis :  brew services start redis
 
 No tuir mai:
 1. git clone git@github.com:pykafe/pykafe.git
