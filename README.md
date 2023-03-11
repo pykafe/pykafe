@@ -28,9 +28,10 @@ No tuir mai:
 1. git clone git@github.com:pykafe/pykafe.git
 2. pip install -r requirements.txt
 3. `pip install psycopg2-binary`
-4. ./manage.py migrate
-5. ./manage.py createsuperuser
-6. ./manage.py runserver
+4. `npm install`
+5. ./manage.py migrate
+6. ./manage.py createsuperuser
+7. ./manage.py runserver
 
 
 
