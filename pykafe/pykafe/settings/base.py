@@ -73,8 +73,6 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
-    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 )
 
@@ -107,8 +105,8 @@ WSGI_APPLICATION = 'pykafe.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'pykafe_db',
     }
 }
 
@@ -176,7 +174,6 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, '../node_modules'),
     os.path.join(PROJECT_DIR, 'static'),
 ]
 
@@ -250,3 +247,5 @@ ACTIVE_USERS_KEY_CLASS = 'analytic.keys.PykafeActiveUserEntry'
 RECAPTCHA_PUBLIC_KEY = "public_key"
 RECAPTCHA_PRIVATE_KEY = "private_key"
 NOCAPTCHA = True
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
