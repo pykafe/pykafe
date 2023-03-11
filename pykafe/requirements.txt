@@ -1,11 +1,12 @@
-wagtail==2.7.4
 django-widget-tweaks==1.4.3
-django>=2.2.4
+Django==3.0.6
 django-tracking2==0.5.0
 geoip2==2.9.0
-wagtailcodeblock==1.15.0.0
 django-rosetta==0.9.3
 django-leaflet==0.24.0
 django-active-users==0.2.2
 django-redis==4.10.0
+wagtail==2.15.6
 wagtail-django-recaptcha==1.0
+wagtail-django-simple-captcha==1.0
+wagtailcodeblock==1.15.0.0
