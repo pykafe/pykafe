@@ -3,7 +3,7 @@ from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from modelcluster.fields import ParentalKey
-from wagtail.images.edit_handlers import ImageChooserPanel
+#from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     FieldRowPanel,
@@ -45,9 +45,9 @@ class ContactPage(WagtailCaptchaEmailForm):
     content_panels = AbstractEmailForm.content_panels + [
         InlinePanel('custom_form_fields', label="Form fields"),
         FieldPanel('image_title', classname="full"),
-        ImageChooserPanel('image'),
+        FieldPanel('image'),
         FieldPanel('intro', classname="full"),
-        StreamFieldPanel('body'),
+        FieldPanel('body'),
         FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel([
             FieldRowPanel([
