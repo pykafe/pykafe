@@ -3,8 +3,8 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.snippets.blocks
 
 
@@ -18,17 +18,17 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='basepage',
             name='body',
-            field=wagtail.core.fields.StreamField([('paragraph', wagtail.core.blocks.StructBlock([('text', wagtail.core.blocks.RichTextBlock(help_text='Add your text in here')), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))]))], blank=True),
+            field=wagtail.fields.StreamField([('paragraph', wagtail.blocks.StructBlock([('text', wagtail.blocks.RichTextBlock(help_text='Add your text in here')), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))]))], blank=True),
         ),
         migrations.AlterField(
             model_name='homepage',
             name='body',
-            field=wagtail.core.fields.StreamField([('paragraph', wagtail.core.blocks.StructBlock([('text', wagtail.core.blocks.RichTextBlock(help_text='Add your text in here')), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))])), ('links', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Add your title', required=True)), ('pages', wagtail.core.blocks.ListBlock(wagtail.core.blocks.PageChooserBlock(help_text='If your page does not have both an image and a description it will not show up!', page_type=['home.BasePage'])))])), ('map', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Enter the title of the map')), ('location_lat', wagtail.core.blocks.DecimalBlock(max_digits=15, max_value=90, min_value=-90)), ('location_long', wagtail.core.blocks.DecimalBlock(max_digits=15, max_value=180, min_value=-180)), ('zoom', wagtail.core.blocks.DecimalBlock(max_value=21, min_value=0))]))]),
+            field=wagtail.fields.StreamField([('paragraph', wagtail.blocks.StructBlock([('text', wagtail.blocks.RichTextBlock(help_text='Add your text in here')), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))])), ('links', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock(help_text='Add your title', required=True)), ('pages', wagtail.blocks.ListBlock(wagtail.blocks.PageChooserBlock(help_text='If your page does not have both an image and a description it will not show up!', page_type=['home.BasePage'])))])), ('map', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock(help_text='Enter the title of the map')), ('location_lat', wagtail.blocks.DecimalBlock(max_digits=15, max_value=90, min_value=-90)), ('location_long', wagtail.blocks.DecimalBlock(max_digits=15, max_value=180, min_value=-180)), ('zoom', wagtail.blocks.DecimalBlock(max_value=21, min_value=0))]))]),
         ),
         migrations.AlterField(
             model_name='learncontentpage',
             name='body',
-            field=wagtail.core.fields.StreamField([('categories', wagtail.core.blocks.StructBlock([('category_type', wagtail.core.blocks.CharBlock(help_text='Add your category type', required=False)), ('categories', wagtail.snippets.blocks.SnippetChooserBlock('home.LearnCategory', required=False))], blank=True, dafault='', null=True)), ('content', wagtail.core.blocks.StructBlock([('text', wagtail.core.blocks.RichTextBlock(help_text='Add your content in here', required=False)), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True)), ('code', wagtail.core.blocks.StructBlock([('code', wagtail.core.blocks.StructBlock([('language', wagtail.core.blocks.ChoiceBlock(choices=[('css', 'CSS'), ('html', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python')], help_text='Coding language', identifier='language', label='Language')), ('code', wagtail.core.blocks.TextBlock(identifier='code', label='Code'))], label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True))]),
+            field=wagtail.fields.StreamField([('categories', wagtail.blocks.StructBlock([('category_type', wagtail.blocks.CharBlock(help_text='Add your category type', required=False)), ('categories', wagtail.snippets.blocks.SnippetChooserBlock('home.LearnCategory', required=False))], blank=True, dafault='', null=True)), ('content', wagtail.blocks.StructBlock([('text', wagtail.blocks.RichTextBlock(help_text='Add your content in here', required=False)), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True)), ('code', wagtail.blocks.StructBlock([('code', wagtail.blocks.StructBlock([('language', wagtail.blocks.ChoiceBlock(choices=[('css', 'CSS'), ('html', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python')], help_text='Coding language', identifier='language', label='Language')), ('code', wagtail.blocks.TextBlock(identifier='code', label='Code'))], label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True))]),
         ),
         migrations.AlterField(
             model_name='learnpagelearncategory',

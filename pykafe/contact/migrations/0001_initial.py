@@ -3,8 +3,8 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -25,9 +25,9 @@ class Migration(migrations.Migration):
                 ('from_address', models.CharField(blank=True, max_length=255, verbose_name='from address')),
                 ('subject', models.CharField(blank=True, max_length=255, verbose_name='subject')),
                 ('image_title', models.CharField(blank=True, max_length=255)),
-                ('intro', wagtail.core.fields.RichTextField(blank=True)),
-                ('thank_you_text', wagtail.core.fields.RichTextField(blank=True)),
-                ('body', wagtail.core.fields.StreamField([('map', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Enter the title of the map')), ('location_lat', wagtail.core.blocks.DecimalBlock(max_digits=15, max_value=90, min_value=-90)), ('location_long', wagtail.core.blocks.DecimalBlock(max_digits=15, max_value=180, min_value=-180)), ('zoom', wagtail.core.blocks.DecimalBlock(max_value=21, min_value=0))]))])),
+                ('intro', wagtail.fields.RichTextField(blank=True)),
+                ('thank_you_text', wagtail.fields.RichTextField(blank=True)),
+                ('body', wagtail.fields.StreamField([('map', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock(help_text='Enter the title of the map')), ('location_lat', wagtail.blocks.DecimalBlock(max_digits=15, max_value=90, min_value=-90)), ('location_long', wagtail.blocks.DecimalBlock(max_digits=15, max_value=180, min_value=-180)), ('zoom', wagtail.blocks.DecimalBlock(max_value=21, min_value=0))]))])),
                 ('image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
             options={

@@ -1,5 +1,5 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from wagtail.core.models import Page
+from wagtail.models import Page
 from wagtail.search.models import Query
 from django.shortcuts import redirect, render
 

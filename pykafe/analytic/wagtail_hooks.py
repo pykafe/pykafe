@@ -4,11 +4,11 @@ from tracking.models import Visitor
 from django.utils.translation import gettext_lazy as _
 
 try:
-    from wagtail.core import hooks
+    from wagtail import hooks
     from wagtail.admin.menu import MenuItem
 except ImportError:  # fallback for Wagtail <2.0
-    from wagtail.wagtailcore import hooks
-    from wagtail.wagtailadmin.menu import MenuItem
+    from wagtail import hooks
+    from wagtail.admin.menu import MenuItem
 
 try:
     from django.urls import reverse
