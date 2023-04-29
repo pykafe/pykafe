@@ -2,7 +2,6 @@ from django.db import models
 from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel
-#from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from .blocks import PykafeRichBlock, PageLinksBlock, PykafeMap, LearnRichBlock, PageLearnRichBlock, CodeRichBlock, TableStreamBlock, CategoryTypeRichBlock

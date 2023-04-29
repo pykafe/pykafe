@@ -75,7 +75,6 @@ MIDDLEWARE = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'search.middlewares.AjaxMiddleware', 
 )
 
 ROOT_URLCONF = 'pykafe.urls'
