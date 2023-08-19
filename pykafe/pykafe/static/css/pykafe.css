@@ -440,12 +440,6 @@ ul.navbar-nav {
     }
 }
 
-.konversa {
-    border: none;
-    height:calc(100% - 80px);
-    width: 100%;
-}
-
 div.responsive-object {
     padding-bottom: 23px!important;
 }
