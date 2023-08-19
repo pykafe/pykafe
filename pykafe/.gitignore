@@ -3,3 +3,4 @@ db.sqlite3
 *.swp
 media/
 node_modules/
+pykafe/settings/local.py
