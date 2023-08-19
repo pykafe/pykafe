@@ -1,8 +1,7 @@
 from django.db import models
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.models import Page
+from wagtail.fields import RichTextField, StreamField
+from wagtail.admin.panels import FieldPanel
 from wagtail.snippets.models import register_snippet
 
 from .blocks import PykafeRichBlock, PageLinksBlock, PykafeMap, LearnRichBlock, PageLearnRichBlock, CodeRichBlock, TableStreamBlock, CategoryTypeRichBlock
@@ -25,8 +24,8 @@ class HomePage(Page):
         )
 
     content_panels = Page.content_panels + [
-        ImageChooserPanel('image'),
-        StreamFieldPanel('body'),
+        FieldPanel('image'),
+        FieldPanel('body'),
     ]
     subpage_types = ["home.BasePage",
                      "contact.ContactPage",
@@ -56,9 +55,9 @@ class BasePage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('show_in_menus', classname="full"),
-        StreamFieldPanel('body'),
+        FieldPanel('body'),
         FieldPanel('image_title', classname="full"),
-        ImageChooserPanel('image'),
+        FieldPanel('image'),
         FieldPanel('description')
     ]
 
@@ -79,8 +78,8 @@ class LearnContentPage(Page):
         )
 
     content_panels = Page.content_panels + [
-        ImageChooserPanel('image'),
-        StreamFieldPanel('body'),
+        FieldPanel('image'),
+        FieldPanel('body'),
     ]
 
 
@@ -98,7 +97,7 @@ class SubLearnContentPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('category', classname="full"),
-        StreamFieldPanel('body'),
+        FieldPanel('body'),
     ]
 
 

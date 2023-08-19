@@ -3,8 +3,8 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import wagtail.contrib.table_block.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 import wagtail.snippets.blocks
 
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('category', models.CharField(blank=True, max_length=255, null=True)),
-                ('body', wagtail.core.fields.StreamField([('category_type', wagtail.core.blocks.StructBlock([('category_type', wagtail.snippets.blocks.SnippetChooserBlock('home.LearnCategory_type', required=False)), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True)), ('content', wagtail.core.blocks.StructBlock([('text', wagtail.core.blocks.RichTextBlock(help_text='Add your content in here', required=False)), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True)), ('code', wagtail.core.blocks.StructBlock([('code_url', wagtail.core.blocks.URLBlock(label='External URL', required=False)), ('code', wagtail.core.blocks.StructBlock([('language', wagtail.core.blocks.ChoiceBlock(choices=[('css', 'CSS'), ('html', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python')], help_text='Coding language', identifier='language', label='Language')), ('code', wagtail.core.blocks.TextBlock(identifier='code', label='Code'))], label='Source Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True)), ('table', wagtail.core.blocks.StreamBlock([('table', wagtail.contrib.table_block.blocks.TableBlock()), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True))])),
+                ('body', wagtail.fields.StreamField([('category_type', wagtail.blocks.StructBlock([('category_type', wagtail.snippets.blocks.SnippetChooserBlock('home.LearnCategory_type', required=False)), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True)), ('content', wagtail.blocks.StructBlock([('text', wagtail.blocks.RichTextBlock(help_text='Add your content in here', required=False)), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True)), ('code', wagtail.blocks.StructBlock([('code_url', wagtail.blocks.URLBlock(label='External URL', required=False)), ('code', wagtail.blocks.StructBlock([('language', wagtail.blocks.ChoiceBlock(choices=[('css', 'CSS'), ('html', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python')], help_text='Coding language', identifier='language', label='Language')), ('code', wagtail.blocks.TextBlock(identifier='code', label='Code'))], label='Source Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True)), ('table', wagtail.blocks.StreamBlock([('table', wagtail.contrib.table_block.blocks.TableBlock()), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))], blank=True, null=True))])),
             ],
             options={
                 'abstract': False,
@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='learncontentpage',
             name='body',
-            field=wagtail.core.fields.StreamField([('Pages', wagtail.core.blocks.StructBlock([('languages', wagtail.core.blocks.ChoiceBlock(choices=[('tet', 'Tetum'), ('en', 'English'), ('pt', 'Portugues')])), ('logo_images', wagtail.images.blocks.ImageChooserBlock()), ('pages', wagtail.core.blocks.ListBlock(wagtail.core.blocks.PageChooserBlock(help_text='Add your page in here', page_type=['home.SubLearnContentPage'])))], blank=True, null=True))]),
+            field=wagtail.fields.StreamField([('Pages', wagtail.blocks.StructBlock([('languages', wagtail.blocks.ChoiceBlock(choices=[('tet', 'Tetum'), ('en', 'English'), ('pt', 'Portugues')])), ('logo_images', wagtail.images.blocks.ImageChooserBlock()), ('pages', wagtail.blocks.ListBlock(wagtail.blocks.PageChooserBlock(help_text='Add your page in here', page_type=['home.SubLearnContentPage'])))], blank=True, null=True))]),
         ),
         migrations.DeleteModel(
             name='LearnCategory',

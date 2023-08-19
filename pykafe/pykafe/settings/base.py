@@ -18,6 +18,7 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail',
     'wagtail.contrib.modeladmin',
     'wagtailcodeblock',
     'wagtail.contrib.table_block',
@@ -73,8 +74,6 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
-    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 )
 
@@ -107,8 +106,8 @@ WSGI_APPLICATION = 'pykafe.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'pykafe_db',
     }
 }
 
@@ -250,3 +249,5 @@ ACTIVE_USERS_KEY_CLASS = 'analytic.keys.PykafeActiveUserEntry'
 RECAPTCHA_PUBLIC_KEY = "public_key"
 RECAPTCHA_PRIVATE_KEY = "private_key"
 NOCAPTCHA = True
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

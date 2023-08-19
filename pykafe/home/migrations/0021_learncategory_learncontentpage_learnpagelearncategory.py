@@ -3,8 +3,8 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.snippets.blocks
 
 
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
             name='LearnContentPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.core.fields.StreamField([('content', wagtail.core.blocks.StructBlock([('text', wagtail.core.blocks.RichTextBlock(help_text='WYSIWYG text', required=False)), ('code', wagtail.core.blocks.StructBlock([('language', wagtail.core.blocks.ChoiceBlock(choices=[('bash', 'Bash/Shell'), ('css', 'CSS'), ('diff', 'diff'), ('html', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python'), ('scss', 'SCSS'), ('yaml', 'YAML')], help_text='Coding language', identifier='language', label='Language')), ('code', wagtail.core.blocks.TextBlock(identifier='code', label='Code'))], label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)), ('align', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))])), ('categories', wagtail.core.blocks.StructBlock([('category_type', wagtail.core.blocks.CharBlock(help_text='Add your title', required=False)), ('categories', wagtail.snippets.blocks.SnippetChooserBlock('home.LearnCategory'))], blank=True, dafault='', null=True))])),
+                ('body', wagtail.fields.StreamField([('content', wagtail.blocks.StructBlock([('text', wagtail.blocks.RichTextBlock(help_text='WYSIWYG text', required=False)), ('code', wagtail.blocks.StructBlock([('language', wagtail.blocks.ChoiceBlock(choices=[('bash', 'Bash/Shell'), ('css', 'CSS'), ('diff', 'diff'), ('html', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python'), ('scss', 'SCSS'), ('yaml', 'YAML')], help_text='Coding language', identifier='language', label='Language')), ('code', wagtail.blocks.TextBlock(identifier='code', label='Code'))], label='Bash Code', language='WAGTAIL_CODE_BLOCK_LANGUAGES', required=False)), ('align', wagtail.blocks.ChoiceBlock(choices=[('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]))])), ('categories', wagtail.blocks.StructBlock([('category_type', wagtail.blocks.CharBlock(help_text='Add your title', required=False)), ('categories', wagtail.snippets.blocks.SnippetChooserBlock('home.LearnCategory'))], blank=True, dafault='', null=True))])),
                 ('image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
             options={
