@@ -18,7 +18,7 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
 ]
 
-urlpatterns += [
+urlpatterns = i18n_patterns(
     # These URLs will have /<language_code>/ appended to the beginning
     path('i18n/', include('django.conf.urls.i18n')),
     path('konversa/', KonversaView.as_view(), name='konversa'),
@@ -26,7 +26,7 @@ urlpatterns += [
     path('sw.js', TemplateView.as_view(template_name='sw.js', content_type='application/javascript'), name="sw_js"),
     path('search/', search_views.search, name='search'),
     path('', include(wagtail_urls)),
-]
+)
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns[0:0] += [
