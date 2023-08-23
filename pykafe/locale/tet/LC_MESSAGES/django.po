@@ -8,60 +8,126 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-08 15:16+0900\n"
-"PO-Revision-Date: 2019-10-08 15:14+0822\n"
-"Last-Translator: b'  <>'\n"
+"POT-Creation-Date: 2023-08-20 00:04+0900\n"
+"PO-Revision-Date: 2023-08-20 00:04+0900\n"
+"Last-Translator:   <dejesusony@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Translated-Using: django-rosetta 0.9.3\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: contact/templates/contact/contact_page.html:47
-msgid "Submit"
-msgstr "Hatama"
+msgid "Active Users"
+msgstr "Uzuáriu Ativu Sira"
 
-#: contact/templates/contact/contact_page.html:53
-msgid "Our Place"
-msgstr "Ami nia fatin"
+msgid "Monitoring Active Users"
+msgstr "Monitoriza  Uzuáriu ativu Sira"
 
-#: contact/templates/contact/contact_page.html:54
-msgid "Street Address"
-msgstr "Rua avenida"
+msgid "Total"
+msgstr "Total"
 
-#: contact/templates/contact/contact_page.html:56
-msgid "Rua Nicolau dos Reis Lobato, Colmera-Díli"
-msgstr "Rua Nicolau dos Reis Lobato, Colmera-Díli"
-
-#: contact/templates/contact/contact_us_email.html:31
 msgid "Name"
 msgstr "Naran"
 
-#: contact/templates/contact/contact_us_email.html:32
+msgid "Username"
+msgstr "Naran Uzuáriu"
+
+msgid "IP Address"
+msgstr "Endersu IP"
+
+msgid "Level"
+msgstr "Nível"
+
+msgid "Status"
+msgstr "Estatutu"
+
+msgid "Admin"
+msgstr "Administrador"
+
+msgid "Active"
+msgstr "Ativu"
+
+msgid "Inactive"
+msgstr "La ativu"
+
+msgid "Analytics"
+msgstr "Analítiku sira"
+
+msgid "Sessions"
+msgstr "Sesaun sira"
+
+msgid "When do your users visit?"
+msgstr "Bainhira mak ita nia uzuáriu sira vizita?"
+
+msgid "Total Visitor and Total Page View"
+msgstr "Total vizitor ho Total haree pájina "
+
+msgid "Popular content"
+msgstr "Konteúdu populár"
+
+msgid "What pages do your users visit?"
+msgstr "Pájina saida mak ita-nia uzuáriu sira vizita?"
+
+msgid "Sessions by country"
+msgstr "Sesaun sira by nasaun"
+
+msgid "Where are your users?"
+msgstr "Ita-nia uzuáriu sira iha ne'ebé?"
+
+msgid "Count users"
+msgstr "Konta uzuáriu sira"
+
+msgid "How many users are visiting this website?"
+msgstr "Ema nain hira mak vizita website ne'e?"
+
+msgid "Active users"
+msgstr "Uzuáriu ativu sira"
+
+msgid "Submit"
+msgstr "Haruka"
+
+msgid "Our Place"
+msgstr "Ami nia fatin"
+
+msgid "Street Address"
+msgstr "Rua avenida"
+
+msgid "Rua Nicolau dos Reis Lobato, Colmera-Díli"
+msgstr "Rua Nicolau dos Reis Lobato, Colmera-Díli"
+
 msgid "Email"
 msgstr "Email"
 
-#: contact/templates/contact/contact_us_email.html:33
 msgid "Subject"
 msgstr "Asuntu"
 
-#: contact/templates/contact/contact_us_email.html:34
 msgid "Messages"
 msgstr "Mensajen"
 
-#: contact/templates/contact/contact_us_email.html:35
 msgid "Submitted"
 msgstr "Hatama ona"
 
-#: contact/templates/contact/contact_us_email.html:36
 msgid "Submitted Via"
-msgstr "Hatama hosi"
+msgstr "Haruka liu husi"
 
-#: home/templates/home/blocks/pykafe_rich_block.html:22
-msgid "More Detail"
-msgstr "Maid detalhu"
+msgid "Dark mode"
+msgstr "Mode nakukun"
 
-#: pykafe/templates/pykafekonversa.html:6
-msgid "Chat"
-msgstr "Konversa"
+msgid "Live Demo"
+msgstr "Live Demo"
+
+msgid "Show more..."
+msgstr "Hatudu barak..."
+
+msgid "Console"
+msgstr "Console"
+
+msgid "Welcome to the Admin"
+msgstr "Benvindu mai iha Admin"
+
+#~ msgid "More Detail"
+#~ msgstr "Maid detalhu"
+
+#~ msgid "Chat"
+#~ msgstr "Konversa"

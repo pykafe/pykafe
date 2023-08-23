@@ -211,10 +211,6 @@ TRACK_IGNORE_STATUS_CODES = [400, 404, 403, 405, 410, 500]
 TRACK_REFERER = True
 TRACK_QUERY_STRING = True
 
-mattermost = dict(
-    url="https://pykafe.pykafe.dns-cloud.net",
-)
-
 consolepython = dict(
     url="https://console.python.org/python-dot-org-console/",
 )
