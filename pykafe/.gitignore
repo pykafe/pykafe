@@ -1,6 +1,8 @@
 db.sqlite3
 *.pyc
 *.swp
+*.DS_Store
+*.python-version
 media/
 node_modules/
 pykafe/settings/local.py
