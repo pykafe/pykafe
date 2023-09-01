@@ -1,11 +1,15 @@
 @font-face {
     font-family: 'Montserrat';
-    src: url(../fonts/Montserrat-Regular.woff2);
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Comfortaa';
-    src: url(../fonts/Comfortaa_Thin.woff2);
+    src: url('../fonts/Comfortaa-Regular.woff2') format('woff2'),
+        url('../fonts/Comfortaa-Regular.woff') format('woff');
+    font-weight: bolder;
+    font-style: normal;
+    font-display: swap;
 }
 
 body {
