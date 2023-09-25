@@ -3,13 +3,11 @@ from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from modelcluster.fields import ParentalKey
-#from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.panels import (
     FieldPanel,
     FieldRowPanel,
     InlinePanel,
-    MultiFieldPanel,
-    StreamFieldPanel
+    MultiFieldPanel
 )
 
 from django.forms.fields import EmailField
@@ -39,7 +37,7 @@ class ContactPage(WagtailCaptchaEmailForm):
     body = StreamField(
             [
                 ('map', PykafeMap())
-            ]
+            ], use_json_field=True
         )
 
     content_panels = AbstractEmailForm.content_panels + [

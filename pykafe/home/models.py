@@ -20,7 +20,7 @@ class HomePage(Page):
                 ('paragraph', PykafeRichBlock()),
                 ('links', PageLinksBlock()),
                 ('map', PykafeMap())
-            ]
+            ], use_json_field=True
         )
 
     content_panels = Page.content_panels + [
@@ -51,7 +51,7 @@ class BasePage(Page):
     description = RichTextField(blank=True, features=['bold', 'italic'])
     body = StreamField([
                 ('paragraph', PykafeRichBlock())
-        ], blank=True)
+        ], blank=True, use_json_field=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('show_in_menus', classname="full"),
@@ -74,7 +74,7 @@ class LearnContentPage(Page):
     body = StreamField(
             [
                 ('Pages', PageLearnRichBlock(null=True, blank=True)),
-            ]
+            ], use_json_field=True
         )
 
     content_panels = Page.content_panels + [
@@ -92,7 +92,7 @@ class SubLearnContentPage(Page):
                 ('content', LearnRichBlock(null=True, blank=True)),
                 ('code', CodeRichBlock(null=True, blank=True)),
                 ('table', TableStreamBlock(null=True, blank=True)),
-            ]
+            ], use_json_field=True
     )
 
     content_panels = Page.content_panels + [

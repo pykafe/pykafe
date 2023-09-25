@@ -1,4 +1,4 @@
-Django<4.2
+Django==4.2.4
 django-active-users==0.4.0
 django-leaflet==0.28.3
 django-redis==5.2.0
@@ -6,6 +6,6 @@ django-rosetta==0.9.8
 django-tracking2==0.5.1
 django-widget-tweaks==1.4.3
 geoip2==2.9.0
-wagtail==4.2
+wagtail==5.0
 wagtail-django-recaptcha==1.0
 wagtailcodeblock==1.29.0.0
