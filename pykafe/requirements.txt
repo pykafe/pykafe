@@ -6,6 +6,6 @@ django-rosetta==0.9.8
 django-tracking2==0.5.1
 django-widget-tweaks==1.4.3
 geoip2==2.9.0
-wagtail==4.2
+wagtail==5.0.5
 wagtail-django-recaptcha==1.0
 wagtailcodeblock==1.29.0.0
